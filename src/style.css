@@ -1,0 +1,97 @@
+#root
+{
+  --primary-color: #ffffff;
+  --secondary-color: #727272;
+  --accent-color: #b91313;
+  --divider-line-color: #00000088;
+
+  --mobile-screen-margin: 25px;
+
+  --banner-height: 250px;
+
+  --navbar-height: 50px;
+  --menu-btn-margin: 10px;
+  --menu-font-size: 1.5rem;
+}
+body
+{
+  margin: 0 auto;
+}
+#navbar
+{
+  position: sticky;
+  display: flex;
+  gap: var(--menu-btn-margin);
+  background-color: var(--secondary-color);
+  font-size: var(--menu-font-size);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  flex-direction: column;
+  padding: var(--mobile-screen-margin);
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  transform: translateX(-100%);
+}
+.mobile-navbar
+{
+  position: sticky;
+  display: flex;
+  align-items: center;
+  height: var(--navbar-height);
+  background-color: var(--secondary-color);
+  margin: 0 auto;
+}
+.mobile-navbar a
+{
+  margin-left: calc(var(--navbar-height) * 0.5);
+}
+
+
+
+.main-webpage-container
+{
+  padding-left: var(--mobile-screen-margin);
+  padding-right: var(--mobile-screen-margin);
+}
+.banner
+{
+  background-image: url(https://placehold.jp/800x300.png);
+  background-size: cover;
+  background-position: center center;
+  margin-left: calc(var(--mobile-screen-margin) * -1);
+  margin-right: calc(var(--mobile-screen-margin) * -1);
+  margin-top: calc(var(--mobile-screen-margin) * -1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: var(--banner-height);
+}
+.main-webpage-section
+{
+  max-width: 720px;
+}
+
+
+@media (min-width: 720px)
+{
+  #navbar
+  {
+    height: var(--navbar-height);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(0%);
+  }
+  .mobile-navbar
+  {
+    position: absolute;
+  }
+  .mobile-menu-btn
+  {
+    visibility: hidden;
+    position: absolute;
+  }
+}
