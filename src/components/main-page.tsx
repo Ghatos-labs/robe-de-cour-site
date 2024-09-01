@@ -1,7 +1,7 @@
 function Mainpage() {
 
   return (
-    <div className="main-webpage-container">
+    <>
       <div className="banner">
           <h1>Robe de Cour</h1>
           <p>Lorem ipsum dolor si amet</p>
@@ -19,7 +19,7 @@ function Mainpage() {
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi minus magnam dolores nam saepe. Suscipit vitae voluptatem architecto illo, illum at dolorem in ab voluptatum eos quam quos quaerat? Placeat!</p>           
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
