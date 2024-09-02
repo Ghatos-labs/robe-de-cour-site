@@ -9,43 +9,51 @@
 
   --banner-height: 250px;
 
-  --navbar-height: 50px;
+  --navbar-height: 75px;
   --menu-btn-margin: 10px;
   --menu-font-size: 1.5rem;
 }
 body
 {
   margin: 0 auto;
+  overflow-x: hidden;
 }
 #desktop-navbar
 {
-  visibility: hidden;
-  position: absolute;
-  
-  /* position: sticky; */
   display: flex;
   gap: var(--menu-btn-margin);
   background-color: var(--secondary-color);
   font-size: var(--menu-font-size);
   width: 100%;
-  height: 100vh;
-  position: absolute;
+  height: var(--navbar-height);
   flex-direction: column;
   padding: var(--mobile-screen-margin);
   box-sizing: border-box;
-  position: absolute;
   top: 0;
   transform: translateX(-100%);
 }
 #mobile-navbar
 {
-  position: sticky;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding: var(--mobile-screen-margin);
   top: 0;
   width: 100%;
   height: 100vh;
   background-color: var(--secondary-color);
   z-index: 10;
 }
+.menu-toggle-btn
+{
+  cursor: pointer;
+}
+.navbar-btn
+{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .mobile-navbar a
 {
   margin-left: calc(var(--navbar-height) * 0.5);
