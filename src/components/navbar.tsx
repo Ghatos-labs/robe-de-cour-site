@@ -28,15 +28,14 @@ function NavButtons() {
 
 function Navbar() {
   React.useEffect(() => {
+    let mobileNavbar = document.getElementById("mobile-navbar");
+    let desktopMenuBtn = document.getElementById("desktop-menu-btn");
     if (isNavbarDeployed == false)
     {
-      let mobileNavbar = document.getElementById("mobile-navbar");
       mobileNavbar?.setAttribute("style", "transform: translateX(-100%);");
     }
     function handleResize()
     {
-      let mobileNavbar = document.getElementById("mobile-navbar");
-      let desktopMenuBtn = document.getElementById("desktop-menu-btn");
       if (window.innerWidth > 720)
       {
         mobileNavbar?.setAttribute("style", "transform: translateX(-100%);");
@@ -48,6 +47,7 @@ function Navbar() {
         desktopMenuBtn?.setAttribute("style", "visibility: visible;");
       }
     }
+    handleResize();
     window.addEventListener('resize', handleResize);
   })
   return (

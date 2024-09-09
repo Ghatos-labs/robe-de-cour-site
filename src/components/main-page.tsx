@@ -2,10 +2,6 @@ function Mainpage() {
 
   return (
     <>
-      <div className="banner">
-          <h1>Robe de Cour</h1>
-          <p>Lorem ipsum dolor si amet</p>
-      </div>
       <div className="main-webpage-section">
         <div>
           <h2>Qui sommes-nous?</h2>

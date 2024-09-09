@@ -82,12 +82,11 @@ body
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
 .mobile-navbar a
 {
   margin-left: calc(var(--navbar-height) * 0.5);
 }
-.main-webpage-container
+.content-container
 {
   padding-left: var(--mobile-screen-margin);
   padding-right: var(--mobile-screen-margin);
@@ -116,5 +115,10 @@ body
   #desktop-navbar div a
   {
     visibility: visible;
+  }
+  .content-container
+  {
+    padding-left: 20%;
+    padding-right: 20%;
   }
 }
