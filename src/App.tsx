@@ -1,5 +1,8 @@
 
+import { Route, Routes } from 'react-router-dom'
+
 import './style.css'
+
 import Navbar from './components/navbar.tsx'
 import Banner from './components/banner.tsx'
 import Footer from './components/footer.tsx'
@@ -8,13 +11,17 @@ import Mainpage from './components/main-page.tsx'
 
 function App() {
   return(
-    <div>
-      <Navbar/>
-      <Banner/>
-      <div className="content-container">
+    <>
+      <div>
+        <Navbar/>
+        <Banner/>
         <Mainpage/>
+        <Footer/>
       </div>
-    </div>
+      <Routes>
+        <Route path="/" element={<Mainpage/>}/>
+      </Routes>    
+    </>
   )
 }
 

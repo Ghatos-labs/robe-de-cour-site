@@ -86,10 +86,9 @@ body
 {
   margin-left: calc(var(--navbar-height) * 0.5);
 }
-.content-container
+.content-container, #footer
 {
-  padding-left: var(--mobile-screen-margin);
-  padding-right: var(--mobile-screen-margin);
+  padding: var(--mobile-screen-margin);
 }
 .banner
 {
@@ -105,10 +104,14 @@ body
   justify-content: center;
   height: var(--banner-height);
 }
-.main-webpage-section
+#footer
 {
-  max-width: 720px;
+  background-color: var(--secondary-color);
+  padding-top: var(--mobile-screen-margin);
+  padding-bottom: var(--mobile-screen-margin);
+  text-align: center;
 }
+
 
 @media (min-width: 720px)
 {
@@ -116,7 +119,7 @@ body
   {
     visibility: visible;
   }
-  .content-container
+  .content-container, #footer
   {
     padding-left: 20%;
     padding-right: 20%;

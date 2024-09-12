@@ -1,11 +1,11 @@
-import "./style.css"
-
 function Footer() {
-
   return (
-    <div className="footer">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quod cupiditate alias, consequuntur repudiandae atque nihil quo, labore id excepturi dolor blanditiis non quibusdam aliquam veniam culpa quidem ex omnis.</p>
-    </div>
+      <div id="footer">
+          <h1>Mentions légales</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia fuga expedita commodi provident hic alias nesciunt explicabo perferendis libero. Temporibus consectetur laudantium odit placeat delectus quisquam quas dolores veritatis laborum.</p>
+          <a>Lien numéro 1</a>
+          <a>Lien numéro 2</a>
+      </div>
   )
 }
 
