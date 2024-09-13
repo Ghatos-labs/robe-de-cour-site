@@ -8,7 +8,9 @@ import Banner from './components/banner.tsx'
 import Footer from './components/footer.tsx'
 
 import Mainpage from './components/main.tsx'
+import Confections from './components/confections.tsx'
 import Contact from './components/contact.tsx'
+import Panier from './components/panier.tsx'
 
 function App() {
   return(
@@ -18,7 +20,9 @@ function App() {
         <Banner/>
         <Routes>
           <Route path="/" element={<Mainpage/>}/>
+          <Route path="/confections" element={<Confections/>}/>
           <Route path="/contacter" element={<Contact/>}/>
+          <Route path="/panier" element={<Panier/>}/>
         </Routes>
         <Footer/>
       </div>

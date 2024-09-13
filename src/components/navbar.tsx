@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 var isNavbarDeployed = false;
 function toggleNavbar()
@@ -18,10 +19,10 @@ function toggleNavbar()
 function NavButtons() {
   return(
     <div>
-      <a className="home-btn navbar-btn">Accueil</a>
-      <a className="dress-btn navbar-btn">Robes</a>
-      <a className="accessories-btn navbar-btn">Accesoires</a>
-      <a className="cart-btn navbar-btn">Panier</a>        
+      <Link to="/" className="navbar-btn">Accueil</Link>
+      <Link to="/confections" className="navbar-btn">Confections</Link>
+      <Link to="/contacter" className="navbar-btn">Nous contacter</Link>
+      <Link to="/panier" className="navbar-btn">Panier</Link>
     </div>
   )
 }
