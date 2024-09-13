@@ -7,7 +7,8 @@ import Navbar from './components/navbar.tsx'
 import Banner from './components/banner.tsx'
 import Footer from './components/footer.tsx'
 
-import Mainpage from './components/main-page.tsx'
+import Mainpage from './components/main.tsx'
+import Contact from './components/contact.tsx'
 
 function App() {
   return(
@@ -15,12 +16,12 @@ function App() {
       <div>
         <Navbar/>
         <Banner/>
-        <Mainpage/>
+        <Routes>
+          <Route path="/" element={<Mainpage/>}/>
+          <Route path="/contacter" element={<Contact/>}/>
+        </Routes>
         <Footer/>
       </div>
-      <Routes>
-        <Route path="/" element={<Mainpage/>}/>
-      </Routes>    
     </>
   )
 }
