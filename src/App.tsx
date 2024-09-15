@@ -20,7 +20,7 @@ function App() {
         <Banner/>
         <Routes>
           <Route path="/" element={<Mainpage/>}/>
-          <Route path="/confections" element={<Confections/>}/>
+          <Route path="/confections" element={<Confections btnAmount={3}/>}/>
           <Route path="/contacter" element={<Contact/>}/>
           <Route path="/panier" element={<Panier/>}/>
         </Routes>
