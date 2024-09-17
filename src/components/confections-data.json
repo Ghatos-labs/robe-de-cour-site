@@ -1,0 +1,26 @@
+{
+    "confectionPage": {
+        "robes": [
+            {
+                "id": 1,
+                "img": "test",
+                "name": "Robe d'apprenti"
+            },
+            {
+                "id": 2,
+                "img": "lorem ipsum",
+                "name": "Robe senior"
+            },
+            {
+                "id": 3,
+                "img": "dolor si amet",
+                "name": "Robe de pro"
+            },
+            {
+                "id": 4,
+                "img": "aaaaaa",
+                "name": "Robe de juge"
+            }
+        ]
+    }
+}

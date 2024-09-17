@@ -1,49 +1,33 @@
 import data from "./confections-data.json";
 
-type Props = {
+interface Props {
   btnAmount: number;
 }
-function GenerateButtons(amount: number)
-{
-  let containerDiv = document.createElement("div");
-  for (let i = 1; i <= amount; i++)
+
+const GenerateButtons = () => {
+  const elementList: JSX.Element[] = [];
+  for(let i = 1; i <= Object.keys(data.confectionPage.robes).length; i++)
   {
-    let img = document.createElement("img");
-    img.src = "https://placehold.co/100x150"
-
-    let title = document.createElement("h3");
-    title.textContent = "text " + i
-
-    containerDiv.appendChild(img);
-    containerDiv.appendChild(title);
+    elementList.push
+    (
+      <div>
+        <img src="https://placehold.co/100x150" key={i}></img>
+        <h3>{data.confectionPage.robes[i - 1].name}</h3>
+      </div>
+    );
   }
-  return containerDiv;
+  return(elementList);
 }
 
-function Confections(props: Props) {
-  let confectionsPage = 
-  `<div className="content-container">
-    <div>
-      <h2>Confections</h2>`
-      + GenerateButtons(props.btnAmount); +
-    `</div>
-  </div>`;
-  
-  return confectionsPage;
-    // <div className="content-container">
-    //   <div>
-    //     <h2>Confections</h2>
-    //     GenerateButtons(props: Props)
-    //     <div>
-    //       <img src="https://placehold.co/100x150"></img>
-    //       <h3>Robe 1</h3>
-    //     </div>
-    //     <div>
-    //       <img src="https://placehold.co/100x150"></img>
-    //       <h3>Robe 2</h3>
-    //     </div>
-    //   </div>
-    // </div>
+function Confections() {
+  return(
+    <div className="content-container">
+      <h2>Confections</h2>
+      <div id="confections-container">
+        {GenerateButtons()}
+      </div>
+    </div>
+  )
 }
 
 export default Confections

@@ -106,6 +106,17 @@ body
   justify-content: center;
   height: var(--banner-height);
 }
+#confections-container
+{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+#confections-container div
+{
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
 #footer
 {
   background-color: var(--secondary-color);
@@ -125,9 +136,20 @@ body
   {
     visibility: visible;
   }
+  #confections-container
+  {
+    grid-template-columns: repeat(3, 1fr);
+  }
   .content-container, #footer
   {
     padding-left: 20%;
     padding-right: 20%;
+  }
+}
+@media (min-width: 1024px)
+{
+  #confections-container
+  {
+    grid-template-columns: repeat(5, 1fr);
   }
 }

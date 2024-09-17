@@ -15,14 +15,20 @@ function toggleNavbar()
     break;
   }
 }
+function closeNavbar()
+{
+  let mobileNavbar = document.getElementById("mobile-navbar");
+  mobileNavbar?.setAttribute("style", "transform: translateX(-100%);")
+  isNavbarDeployed = false;
+}
 
 function NavButtons() {
   return(
     <div>
-      <Link to="/" className="navbar-btn">Accueil</Link>
-      <Link to="/confections" className="navbar-btn">Confections</Link>
-      <Link to="/contacter" className="navbar-btn">Nous contacter</Link>
-      <Link to="/panier" className="navbar-btn">Panier</Link>
+      <Link to="/" className="navbar-btn" onClick={closeNavbar}>Accueil</Link>
+      <Link to="/confections" className="navbar-btn" onClick={closeNavbar}>Confections</Link>
+      <Link to="/contacter" className="navbar-btn" onClick={closeNavbar}>Nous contacter</Link>
+      <Link to="/panier" className="navbar-btn" onClick={closeNavbar}>Panier</Link>
     </div>
   )
 }
