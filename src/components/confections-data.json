@@ -2,24 +2,66 @@
     "confectionPage": {
         "robes": [
             {
-                "id": 1,
-                "img": "test",
-                "name": "Robe d'apprenti"
+                "id": "eleve",
+                "name": "Élève avocat"
             },
             {
-                "id": 2,
-                "img": "lorem ipsum",
-                "name": "Robe senior"
+                "id": "avocat",
+                "name": "Avocat"
             },
             {
-                "id": 3,
-                "img": "dolor si amet",
-                "name": "Robe de pro"
+                "id": "auditeur",
+                "name": "Auditeur de justice"
             },
             {
-                "id": 4,
-                "img": "aaaaaa",
-                "name": "Robe de juge"
+                "id": "magistrat",
+                "name": "Magistrat"
+            }
+        ],
+        "accesoires": [
+            {
+                "id": "rabat",
+                "name": "Rabat"
+            },
+            {
+                "id": "gants",
+                "name": "Paire de gants"
+            },
+            {
+                "id": "epitoge",
+                "name": "Épitoge"
+            },
+            {
+                "id": "housse",
+                "name": "Housse"
+            },
+            {
+                "id": "fourrure",
+                "name": "Rang de fourrure"
+            },
+            {
+                "id": "sac",
+                "name": "Sac de transport"
+            },
+            {
+                "id": "noeud",
+                "name": "Noeud papillon"
+            },
+            {
+                "id": "boutons",
+                "name": "Boutons fantaisies"
+            },
+            {
+                "id": "ceinture",
+                "name": "Ceinture"
+            },
+            {
+                "id": "toque",
+                "name": "Toque"
+            },
+            {
+                "id": "doublure",
+                "name": "Doublure couleur"
             }
         ]
     }

@@ -11,6 +11,7 @@ import Mainpage from './components/main.tsx'
 import Confections from './components/confections.tsx'
 import Contact from './components/contact.tsx'
 import Panier from './components/panier.tsx'
+import Article from './components/article.tsx'
 
 function App() {
   return(
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Mainpage/>}/>
           <Route path="/confections" element={<Confections/>}/>
+          <Route path="/confections/*" element={<Article/>}/>
           <Route path="/contacter" element={<Contact/>}/>
           <Route path="/panier" element={<Panier/>}/>
         </Routes>

@@ -12,6 +12,8 @@
   --navbar-height: 50px;
   --menu-btn-margin: 10px;
   --menu-font-size: 1.5rem;
+
+  --confection-btn-margin: 10px;
 }
 body
 {
@@ -106,17 +108,21 @@ body
   justify-content: center;
   height: var(--banner-height);
 }
-#confections-container
+.confections-container
 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
-#confections-container div
+.confection-btn
 {
-  display: grid;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: var(--confection-btn-margin);
+  padding: calc(var(--confection-btn-margin) * 0.5);
+  justify-content: top;
   text-align: center;
 }
+
 #footer
 {
   background-color: var(--secondary-color);
@@ -136,7 +142,7 @@ body
   {
     visibility: visible;
   }
-  #confections-container
+  .confections-container
   {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -148,7 +154,7 @@ body
 }
 @media (min-width: 1024px)
 {
-  #confections-container
+  .confections-container
   {
     grid-template-columns: repeat(5, 1fr);
   }
