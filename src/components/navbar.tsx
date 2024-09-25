@@ -25,10 +25,10 @@ function closeNavbar()
 function NavButtons() {
   return(
     <div>
-      <Link to="/" className="navbar-btn" onClick={closeNavbar}>Accueil</Link>
-      <Link to="/confections" className="navbar-btn" onClick={closeNavbar}>Confections</Link>
-      <Link to="/contacter" className="navbar-btn" onClick={closeNavbar}>Nous contacter</Link>
-      <Link to="/panier" className="navbar-btn" onClick={closeNavbar}>Panier</Link>
+      <Link to="/" className="navbar-btn global-btn-style" onClick={closeNavbar}>Accueil</Link>
+      <Link to="/confections" className="navbar-btn global-btn-style" onClick={closeNavbar}>Confections</Link>
+      <Link to="/contacter" className="navbar-btn global-btn-style" onClick={closeNavbar}>Nous contacter</Link>
+      <Link to="/panier" className="navbar-btn global-btn-style" onClick={closeNavbar}>Panier</Link>
     </div>
   )
 }
