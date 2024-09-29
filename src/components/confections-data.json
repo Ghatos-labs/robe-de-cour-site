@@ -3,6 +3,7 @@
         "robes": [{
             "id": "eleve",
             "name": "Élève avocat",
+            "description": "Lorem ipsum dolor si amet.",
             "options": [{
                 "color": ["noir", "blanc", "bleu", "rouge"],
                 "doublure": ["noir", "blanc", "bleu", "rouge"]
@@ -10,6 +11,7 @@
         },
         {
             "id": "avocat",
+            "description": "Les pommes de terre, c'est cool!",
             "name": "Avocat"
         },
         {

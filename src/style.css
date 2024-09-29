@@ -1,21 +1,28 @@
 #root
 {
+  font-family: sans-serif;
+
   --background-color: #ffffff;
   --primary-color: #222222;
   --accent-color: #b91313;
 
-  --btn-hover-bg-color: #88888888;
+  --navbar-btn-hover-color: #ffffff44;
 
   --mobile-screen-margin: 25px;
-
-  --banner-height: 250px;
+  --desktop-screen-margin: 25%;
+  --desktop-element-maxwidth: 1000px;
 
   --navbar-height: 50px;
   --menu-btn-margin: 10px;
   --menu-font-size: 1.5rem;
 
-  --confection-btn-margin: 10px;
-  --btn-border-radius: 5px;
+  --banner-height: 250px;
+
+  --btn-gap: 10px;
+  --btn-padding: 10px;
+  --btn-border-radius: 10px;
+
+  --btn-transition-duration: 0.25s;
 
   background-color: var(--background-color);
 }
@@ -24,6 +31,25 @@ body
   margin: 0 auto;
   overflow-x: hidden;
 }
+.global-btn-style
+{
+  padding: var(--btn-padding);
+  border-radius: var(--btn-border-radius);
+  border: solid 3px var(--accent-color);
+  text-decoration: none;
+  color: black;
+  transition-duration: var(--btn-transition-duration);
+  transition-property: background-color, color;
+}
+.global-btn-style:hover
+{
+  background-color: var(--accent-color);
+  color: white;
+  transition-duration: var(--btn-transition-duration);
+}
+
+
+
 #desktop-navbar
 {
   position: sticky;
@@ -103,13 +129,13 @@ body
   color: white;
   text-decoration: none;
   border-radius: var(--btn-border-radius);
-  transition-duration: 0.3s;
+  transition-duration: var(--btn-transition-duration);
   transition-property: background-color;
 }
 .navbar-btn:hover
 {
-  background-color: var(--btn-hover-bg-color);
-  transition-duration: 0.3s;
+  background-color: var(--navbar-btn-hover-color);
+  transition-duration: var(--btn-transition-duration);
   transition-property: background-color;
 }
 .mobile-navbar a
@@ -143,21 +169,22 @@ body
 {
   display: flex;
   flex-direction: column;
-  margin: var(--confection-btn-margin);
-  padding: calc(var(--confection-btn-margin) * 0.5);
+  margin: var(--btn-gap);
+  padding: var(--btn-padding);
   justify-content: top;
   text-align: center;
   border-radius: var(--btn-border-radius);
   text-decoration: none;
   color: black;
-  transition-duration: 0.3s;
-  transition-property: background-color;
+  transition-duration: var(--btn-transition-duration);
+  transition-property: background-color, color;
 }
 .confection-btn:hover
 {
-  background-color: var(--btn-hover-bg-color);
-  transition-duration: 0.3s;
-  transition-property: background-color;
+  background-color: var(--accent-color);
+  transition-duration: var(--btn-transition-duration);
+  color: white;
+  transition-property: background-color, color;
 }
 #footer
 {
