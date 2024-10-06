@@ -27,7 +27,7 @@ const GenerateAccessoriesBtn = () => {
     elementList.push
     (
       <Link to={"/confections/" + data.confectionPage.accesoires[i - 1].id} className="confection-btn">
-        <img src="https://placehold.co/100x150" key={i}></img>
+        <img src="https://placehold.co/100x150" key={i + 100}></img>
         <h3>{data.confectionPage.accesoires[i - 1].name}</h3>
       </Link>
     );

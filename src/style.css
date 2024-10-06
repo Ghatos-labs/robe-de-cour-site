@@ -186,6 +186,13 @@ body
   color: white;
   transition-property: background-color, color;
 }
+#article-form
+{
+  display: grid;
+  width: fit-content;
+  flex-direction: column;
+  grid-gap: 15px;
+}
 #footer
 {
   background-color: var(--primary-color);

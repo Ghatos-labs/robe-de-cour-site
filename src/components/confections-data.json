@@ -4,67 +4,87 @@
             "id": "eleve",
             "name": "Élève avocat",
             "description": "Lorem ipsum dolor si amet.",
-            "options": [{
-                "color": ["noir", "blanc", "bleu", "rouge"],
+            "options": {
+                "material": ["cotton", "polyester", "soie"],
                 "doublure": ["noir", "blanc", "bleu", "rouge"]
-            }]
+            }
         },
         {
             "id": "avocat",
+            "name": "Avocat",
             "description": "Les pommes de terre, c'est cool!",
-            "name": "Avocat"
+            "options": {
+                "material": ["cotton", "polyester", "soie"],
+                "doublure": ["noir", "blanc", "bleu", "rouge"]
+            }
         },
         {
             "id": "auditeur",
-            "name": "Auditeur de justice"
+            "name": "Auditeur de justice",
+            "description": "Les pommes de terre, c'est cool!",
+            "options": {
+                "material": ["cotton", "polyester", "soie"],
+                "doublure": ["noir", "blanc", "bleu", "rouge"]
+            }
         },
         {
             "id": "magistrat",
-            "name": "Magistrat"
+            "name": "Magistrat",
+            "description": "Les pommes de terre, c'est cool!",
+            "options": {
+                "material": ["cotton", "polyester", "soie"],
+                "doublure": ["noir", "blanc", "bleu", "rouge"]
+            }
         }],
         "accesoires": [{
             "id": "rabat",
-            "name": "Rabat"
+            "name": "Rabat",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "gants",
-            "name": "Paire de gants"
+            "name": "Paire de gants",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "epitoge",
-            "name": "Épitoge"
+            "name": "Épitoge",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "housse",
-            "name": "Housse"
+            "name": "Housse",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "fourrure",
-            "name": "Rang de fourrure"
+            "name": "Rang de fourrure",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "sac",
-            "name": "Sac de transport"
+            "name": "Sac de transport",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "noeud",
-            "name": "Noeud papillon"
+            "name": "Noeud papillon",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "boutons",
-            "name": "Boutons fantaisies"
+            "name": "Boutons fantaisies",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "ceinture",
-            "name": "Ceinture"
+            "name": "Ceinture",
+            "description": "Lorem ipsum dolor si amet."
         },
         {
             "id": "toque",
-            "name": "Toque"
-        },
-        {
-            "id": "doublure",
-            "name": "Doublure couleur"
+            "name": "Toque",
+            "description": "Lorem ipsum dolor si amet."
         }]
     }
 }
