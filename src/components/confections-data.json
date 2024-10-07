@@ -1,90 +1,103 @@
 {
-    "confectionPage": {
-        "robes": [{
-            "id": "eleve",
-            "name": "Élève avocat",
-            "description": "Lorem ipsum dolor si amet.",
-            "options": {
-                "material": ["cotton", "polyester", "soie"],
-                "doublure": ["noir", "blanc", "bleu", "rouge"]
-            }
-        },
-        {
-            "id": "avocat",
-            "name": "Avocat",
-            "description": "Les pommes de terre, c'est cool!",
-            "options": {
-                "material": ["cotton", "polyester", "soie"],
-                "doublure": ["noir", "blanc", "bleu", "rouge"]
-            }
-        },
-        {
-            "id": "auditeur",
-            "name": "Auditeur de justice",
-            "description": "Les pommes de terre, c'est cool!",
-            "options": {
-                "material": ["cotton", "polyester", "soie"],
-                "doublure": ["noir", "blanc", "bleu", "rouge"]
-            }
-        },
-        {
-            "id": "magistrat",
-            "name": "Magistrat",
-            "description": "Les pommes de terre, c'est cool!",
-            "options": {
-                "material": ["cotton", "polyester", "soie"],
-                "doublure": ["noir", "blanc", "bleu", "rouge"]
-            }
-        }],
-        "accesoires": [{
-            "id": "rabat",
-            "name": "Rabat",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "gants",
-            "name": "Paire de gants",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "epitoge",
-            "name": "Épitoge",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "housse",
-            "name": "Housse",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "fourrure",
-            "name": "Rang de fourrure",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "sac",
-            "name": "Sac de transport",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "noeud",
-            "name": "Noeud papillon",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "boutons",
-            "name": "Boutons fantaisies",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "ceinture",
-            "name": "Ceinture",
-            "description": "Lorem ipsum dolor si amet."
-        },
-        {
-            "id": "toque",
-            "name": "Toque",
-            "description": "Lorem ipsum dolor si amet."
-        }]
-    }
+    "confectionPage":
+    [{
+        "id": "eleve",
+        "name": "Élève avocat",
+        "isRobe": true,
+        "description": "Lorem ipsum dolor si amet.",
+        "options": {
+            "material": ["cotton", "polyester", "soie"],
+            "doublure": ["noir", "blanc", "bleu", "rouge"]
+        }
+    },
+    {
+        "id": "avocat",
+        "name": "Avocat",
+        "isRobe": true,
+        "description": "Les pommes de terre, c'est cool!",
+        "options": {
+            "material": ["cotton", "polyester", "soie"],
+            "doublure": ["noir", "blanc", "bleu", "rouge"]
+        }
+    },
+    {
+        "id": "auditeur",
+        "name": "Auditeur de justice",
+        "isRobe": true,
+        "description": "Les pommes de terre, c'est cool!",
+        "options": {
+            "material": ["cotton", "polyester", "soie"],
+            "doublure": ["noir", "blanc", "bleu", "rouge"]
+        }
+    },
+    {
+        "id": "magistrat",
+        "name": "Magistrat",
+        "isRobe": true,
+        "description": "Les pommes de terre, c'est cool!",
+        "options": {
+            "material": ["cotton", "polyester", "soie"],
+            "doublure": ["noir", "blanc", "bleu", "rouge"]
+        }
+    },
+    {
+        "id": "rabat",
+        "name": "Rabat",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "gants",
+        "name": "Paire de gants",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "epitoge",
+        "name": "Épitoge",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "housse",
+        "name": "Housse",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "fourrure",
+        "name": "Rang de fourrure",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "sac",
+        "name": "Sac de transport",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "noeud",
+        "name": "Noeud papillon",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "boutons",
+        "name": "Boutons fantaisies",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "ceinture",
+        "name": "Ceinture",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    },
+    {
+        "id": "toque",
+        "name": "Toque",
+        "isRobe": false,
+        "description": "Lorem ipsum dolor si amet."
+    }]
 }
