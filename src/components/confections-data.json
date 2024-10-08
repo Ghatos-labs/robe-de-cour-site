@@ -6,8 +6,8 @@
         "isRobe": true,
         "description": "Lorem ipsum dolor si amet.",
         "options": {
-            "material": ["cotton", "polyester", "soie"],
-            "doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Tissu": ["cotton", "polyester", "soie"],
+            "Doublure": ["noir", "blanc", "bleu", "rouge"]
         }
     },
     {
@@ -16,8 +16,8 @@
         "isRobe": true,
         "description": "Les pommes de terre, c'est cool!",
         "options": {
-            "material": ["cotton", "polyester", "soie"],
-            "doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Tissu": ["cotton", "polyester", "soie"],
+            "Doublure": ["noir", "blanc", "bleu", "rouge"]
         }
     },
     {
@@ -26,8 +26,8 @@
         "isRobe": true,
         "description": "Les pommes de terre, c'est cool!",
         "options": {
-            "material": ["cotton", "polyester", "soie"],
-            "doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Tissu": ["cotton", "polyester", "soie"],
+            "Doublure": ["noir", "blanc", "bleu", "rouge"]
         }
     },
     {
@@ -36,8 +36,8 @@
         "isRobe": true,
         "description": "Les pommes de terre, c'est cool!",
         "options": {
-            "material": ["cotton", "polyester", "soie"],
-            "doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Tissu": ["cotton", "polyester", "soie"],
+            "Doublure": ["noir", "blanc", "bleu", "rouge"]
         }
     },
     {

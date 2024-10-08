@@ -8,33 +8,40 @@ const getArticleID = () => {
     return id;
 }
 
-// const getMaterialList = () => {
-//     const elemID = getArticleID();
-//     const elementList: JSX.Element[] = [];
-//     var materialPropAdress = data.confectionPage[elemID].options.material;
-//     for(let i = 1; i <= Object.keys(materialPropAdress).length; i++)
-//     {
-//         elementList.push
-//         (
-//             <option>{materialPropAdress[i - 1]}</option>
-//         );
-//     }
-//     return(elementList);
-// }
+const getChoiceList = (choice: string) => {
+    const elemID = getArticleID();
+    const elementList: JSX.Element[] = [];
+    var materialPropAdress;
 
-// const getDoublureList = () => {
-//     const elemID = getArticleID();
-//     const elementList: JSX.Element[] = [];
-//     var doublurePropAdress = data.confectionPage[elemID].options.doublure;
-//     for(let i = 1; i <= Object.keys(doublurePropAdress).length; i++)
-//     {
-//         elementList.push
-//         (
-//         <option>{doublurePropAdress[i - 1]}</option>
-//         );
-//     }
-//     return(elementList);
-// }
+    if (choice == "Tissu")
+    {
+        materialPropAdress = data.confectionPage[elemID].options?.Tissu;
+    }
+    if (choice == "Doublure")
+    {
+        materialPropAdress = data.confectionPage[elemID].options?.Doublure;
+    }
+    if (materialPropAdress == undefined)
+    {
+        return
+    }
+    
+    for(let i = 0; i < Object.keys(materialPropAdress).length; i++)
+    {
+        elementList.push
+        (
+            <option>{materialPropAdress[i]}</option>
+        );            
+    }
+    return(
+        <>
+            <label>{choice}</label>
+            <select>
+                {elementList}
+            </select>        
+        </>
+    );
+}
 
 function Article() {
     const elemID = getArticleID();
@@ -46,17 +53,11 @@ function Article() {
                 <Link to="/confections" className="return-btn global-btn-style">Retour</Link>
                 <h1>{elemAdress.name}</h1>
                 <div>
-                    <img src={"/public/img/" + elemAdress.id + "-robe-img.jpg"}></img>
+                    <img src={"/img/" + elemAdress.id + "-robe-img.jpg"}></img>
                     <p id="article-description">{elemAdress.description}</p>
                     <form id="article-form">
-                        <label htmlFor="robe-color">Couleur</label>
-                        <select className="global-btn-style">
-                            {/* <>{getMaterialList()}</> */}
-                        </select>
-                        <label htmlFor="robe-color">Doublure</label>
-                        <select className="global-btn-style">
-                            {/* <>{getDoublureList()}</> */}
-                        </select>
+                        {getChoiceList("Tissu")}
+                        {getChoiceList("Doublure")}
                         <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style"></input>
                     </form>
                 </div>
