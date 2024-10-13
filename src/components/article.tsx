@@ -1,6 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import data from "./confections-data.json";
 
+// import { useContext } from "react"
+// import { Context } from "./context/cart-context"
+
 const getArticleID = () => {
     const {articleID} = useParams();
     const list = data.confectionPage;
@@ -11,6 +14,7 @@ const getArticleID = () => {
 const getChoiceList = (choice: string) => {
     const elemID = getArticleID();
     const elementList: JSX.Element[] = [];
+
     var materialPropAdress;
 
     if (choice == "Tissu")
@@ -30,7 +34,7 @@ const getChoiceList = (choice: string) => {
     {
         elementList.push
         (
-            <option>{materialPropAdress[i]}</option>
+            <option key={i}>{materialPropAdress[i]}</option>
         );            
     }
     return(
@@ -43,9 +47,18 @@ const getChoiceList = (choice: string) => {
     );
 }
 
+// function addToCart (list: object[]) {
+//     list.push([1, 2, 3, "lorem ipsum"]);
+//     console.log(list);
+// }
+function addToCart () {
+
+}
+
 function Article() {
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID]
+    // const cart = useContext(Context);
 
     return (
         <div className="content-container">
@@ -58,7 +71,8 @@ function Article() {
                     <form id="article-form">
                         {getChoiceList("Tissu")}
                         {getChoiceList("Doublure")}
-                        <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style"></input>
+                        {/* <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style" onClick={addToCart(cart)}></input> */}
+                        <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style" onClick={addToCart}></input>
                     </form>
                 </div>
             </div>

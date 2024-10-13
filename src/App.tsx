@@ -1,7 +1,8 @@
-
 import { Route, Routes } from 'react-router-dom'
 
 import './style.css'
+
+//import { ContextProvider } from './components/context/cart-context.tsx'
 
 import Navbar from './components/navbar.tsx'
 import Banner from './components/banner.tsx'

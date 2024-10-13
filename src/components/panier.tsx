@@ -1,4 +1,8 @@
+// import { useContext } from "react"
+// import { Context } from "./context/cart-context"
+
 function Panier() {
+  // const cart = useContext(Context);
 
   return (
     <div className="content-container">
