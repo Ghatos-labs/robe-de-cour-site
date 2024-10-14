@@ -1,4 +1,4 @@
-function Mainpage() {
+function Home() {
 
   return (
     <div className="content-container">
@@ -19,4 +19,4 @@ function Mainpage() {
   )
 }
 
-export default Mainpage
+export default Home

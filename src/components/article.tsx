@@ -1,9 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import data from "./confections-data.json";
 
-// import { useContext } from "react"
-// import { Context } from "./context/cart-context"
-
 const getArticleID = () => {
     const {articleID} = useParams();
     const list = data.confectionPage;
@@ -47,10 +44,6 @@ const getChoiceList = (choice: string) => {
     );
 }
 
-// function addToCart (list: object[]) {
-//     list.push([1, 2, 3, "lorem ipsum"]);
-//     console.log(list);
-// }
 function addToCart () {
 
 }
@@ -58,7 +51,6 @@ function addToCart () {
 function Article() {
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID]
-    // const cart = useContext(Context);
 
     return (
         <div className="content-container">
@@ -71,7 +63,6 @@ function Article() {
                     <form id="article-form">
                         {getChoiceList("Tissu")}
                         {getChoiceList("Doublure")}
-                        {/* <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style" onClick={addToCart(cart)}></input> */}
                         <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style" onClick={addToCart}></input>
                     </form>
                 </div>
