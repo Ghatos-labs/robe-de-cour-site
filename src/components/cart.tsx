@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface cartState {
+  count: number,
+  list: Object[];
+}
+
+const initialState: cartState = {
   count: 0,
   list: []
 }
@@ -14,10 +19,13 @@ export const cartSlice = createSlice({
     },
     decrement: (state) => {
       state.count -= 1;
+    },
+    push: (state, action) => {
+      state.list.push(action.payload);
     }
   }
 })
 
-export const { increment, decrement } = cartSlice.actions;
+export const { increment, decrement, push } = cartSlice.actions;
 
 export default cartSlice.reducer;

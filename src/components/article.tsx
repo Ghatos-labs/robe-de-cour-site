@@ -1,6 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import data from "./confections-data.json";
 
+import { useDispatch, useSelector } from "react-redux";
+import { increment, decrement, push } from "./cart";
+
 const getArticleID = () => {
     const {articleID} = useParams();
     const list = data.confectionPage;
@@ -44,13 +47,23 @@ const getChoiceList = (choice: string) => {
     );
 }
 
-function addToCart () {
+// function addToCart () {
+//     //@ts-ignore
+//     const count = useSelector((state) => state.counter.count);
+//     const dispatch = useDispatch();
 
-}
+//     const elemID = getArticleID();
+//     const elemAdress = data.confectionPage[elemID];
+    
+//     () => dispatch(push(elemAdress.id))
+// }
 
 function Article() {
+    //@ts-ignore
+    const count = useSelector((state) => state.counter.count);
+    const dispatch = useDispatch();
     const elemID = getArticleID();
-    const elemAdress = data.confectionPage[elemID]
+    const elemAdress = data.confectionPage[elemID];
 
     return (
         <div className="content-container">
@@ -63,8 +76,9 @@ function Article() {
                     <form id="article-form">
                         {getChoiceList("Tissu")}
                         {getChoiceList("Doublure")}
-                        <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style" onClick={addToCart}></input>
+                        {/* <input type="submit" value="Ajouter au panier" className="add-cart-btn global-btn-style" onClick={addToCart}></input> */}
                     </form>
+                    <button onClick={() => dispatch(push(elemAdress.id))}>go to panier</button>
                 </div>
             </div>
         </div>
