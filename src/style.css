@@ -31,6 +31,12 @@ body
   margin: 0 auto;
   overflow-x: hidden;
 }
+th
+{
+  border: 2px solid black;
+  text-align: left;
+  padding: 10px;
+}
 .global-btn-style
 {
   padding: var(--btn-padding);

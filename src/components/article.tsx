@@ -47,17 +47,6 @@ const getChoiceList = (choice: string) => {
     );
 }
 
-// function addToCart () {
-//     //@ts-ignore
-//     const count = useSelector((state) => state.counter.count);
-//     const dispatch = useDispatch();
-
-//     const elemID = getArticleID();
-//     const elemAdress = data.confectionPage[elemID];
-    
-//     () => dispatch(push(elemAdress.id))
-// }
-
 function Article() {
     //@ts-ignore
     const count = useSelector((state) => state.counter.count);

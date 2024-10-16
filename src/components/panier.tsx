@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { increment, decrement, push } from "./cart";
+import data from "./confections-data.json";
 
 const showCartList = () => {
   //@ts-ignore
@@ -8,28 +8,32 @@ const showCartList = () => {
 
   for(let i = 0; i < count.length; i++)
   {
-      elementList.push
-      (
-          <p key={i}>{count[i]}</p>
-      );            
+    const id = data.confectionPage.findIndex(Object => Object.id === count[i]);  
+    elementList.push
+    (
+        <tr>
+          <th key={i}>{data.confectionPage[id].name}</th>
+          <th key={i}>{data.confectionPage[id].description}</th>
+          <th key={i}>dabloons!</th>
+        </tr>
+    );            
   }
   return(elementList);
 }
 
 function Panier() {
-  //@ts-ignore
-  // const count = useSelector((state) => state.counter.count);
-  // const dispatch = useDispatch();
   return (
     <div className="content-container">
       <div>
         <h2>Panier</h2>
-        {/* <p>{count}</p>
-        <button onClick={() => dispatch(increment())}>+</button>
-        <button onClick={() => dispatch(decrement())}>-</button>
-        <br></br>
-        <button onClick={() => dispatch(push(["a", "b"]))}>Add element</button> */}
-        {showCartList()}
+        <table style={{border: "solid black 1px"}}>
+          <tr>
+            <th>Article</th>
+            <th>Détails</th>
+            <th>Prix</th>
+          </tr>
+          {showCartList()}
+        </table>
       </div>
     </div>
   )
