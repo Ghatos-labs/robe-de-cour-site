@@ -18,6 +18,8 @@
 
   --banner-height: 250px;
 
+  --footer-height: 250px;
+
   --btn-gap: 10px;
   --btn-padding: 10px;
   --btn-border-radius: 10px;
@@ -53,7 +55,10 @@ th
   color: white;
   transition-duration: var(--btn-transition-duration);
 }
-
+.content-container
+{
+  min-height: calc(100vh - var(--navbar-height) - var(--banner-height) - var(--footer-height))
+}
 
 
 #desktop-navbar
@@ -205,6 +210,7 @@ th
   padding-top: var(--mobile-screen-margin);
   padding-bottom: var(--mobile-screen-margin);
   text-align: center;
+  min-height: var(--footer-height);
 }
 #footer h1, #footer p, #footer a
 {

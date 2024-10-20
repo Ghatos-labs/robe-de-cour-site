@@ -1,35 +1,66 @@
 import { Link } from "react-router-dom";
 import data from "./confections-data.json";
 
-const GenerateConfectionBtn = (isElemRobe: boolean) => {
-  const elementList: JSX.Element[] = [];
-  for(let i = 0; i < data.confectionPage.length; i++)
+const SortItemsByCategory = () => {
+  var products = data.confectionPage;
+  var categories: string[] = [];
+
+  for(let i = 0; i < products.length; i++)
   {
-    if (data.confectionPage[i].isRobe == isElemRobe)
+    if (!categories.includes(products[i].category))
     {
-      elementList.push
-      (
-        <Link to={"/confections/" + data.confectionPage[i].id} className="confection-btn">
-          <img src="https://placehold.co/100x150" key={i}></img>
-          <h3>{data.confectionPage[i].name}</h3>
-        </Link>
-      );      
+      categories.push(products[i].category);
     }
   }
-  return(elementList);
+  var sortedItems = [];
+
+  for (let i = 0; i < categories.length; i++)
+  {
+    sortedItems.push(products.filter(item => item.category == categories[i]))
+  }
+  return sortedItems;
+}
+
+const DisplayProducts = () => {
+  var sortedItems = SortItemsByCategory();
+  const elementList: JSX.Element[] = [];
+
+  for (let i = 0; i < sortedItems.length; i++)
+  {
+    elementList.push
+    (
+      <h2>{sortedItems[i][0].category}</h2>
+    )
+    const categoryContent: JSX.Element[] = [];
+    for (let j = 0; j < sortedItems[i].length; j++)
+    {
+      categoryContent.push
+      (
+        <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn">
+          <img src="https://placehold.co/100x150" key={j}></img>
+          <h3>{sortedItems[i][j].name}</h3>
+        </Link>
+      )
+    }
+    elementList.push
+    (
+      <div className="confections-container">
+        {categoryContent}
+      </div>
+    )
+  }
+
+  return(
+    <div className="content-container">
+      {elementList}
+    </div>
+  )
 }
 
 function Confections() {
   return(
     <div className="content-container">
-      <h2>Robes</h2>
-      <div className="confections-container">
-        {GenerateConfectionBtn(true)}
-      </div>
-      <h2>Accesoires</h2>
-      <div className="confections-container">
-        {GenerateConfectionBtn(false)}
-      </div>
+      {DisplayProducts()}
     </div>
   )
 }

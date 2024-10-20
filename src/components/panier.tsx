@@ -1,24 +1,60 @@
-import { useDispatch, useSelector } from "react-redux";
-import data from "./confections-data.json";
+import { useAppSelector, useAppDispatch } from '../redux/hooks.ts'; 
+import { removeFromCart } from '../redux/actionTypes';
+import { Product } from '../redux/actionTypes.ts'
+import { Link } from "react-router-dom";
+import { RootState } from "@reduxjs/toolkit/query";
+
+const DisplayCartElements = (cart: Product[]) => {
+  const elementList: JSX.Element[] = [];
+  const dispatch = useAppDispatch();
+
+  const handleRemove = (id: string) => {
+    dispatch(removeFromCart(id));
+  };
+
+  for (let i = 0; i < cart.length; i++)
+  {
+    elementList.push(
+      <tr>
+        <td>{cart[i].name}</td>
+        <td>{cart[i].description}</td>
+        <td>{cart[i].price}</td>
+        <td><button onClick={() => handleRemove(cart[i].id)}>Supprimer l'article</button></td>
+      </tr>
+    )
+  }
+
+  return elementList;
+}
 
 const showCartList = () => {
   //@ts-ignore
-  const count = useSelector((state) => state.counter.list);
-  const elementList: JSX.Element[] = [];
+  const cart = useAppSelector((state: RootState) => state.cart);
 
-  for(let i = 0; i < count.length; i++)
+  if (cart.length == 0)
   {
-    const id = data.confectionPage.findIndex(Object => Object.id === count[i]);  
-    elementList.push
-    (
-        <tr>
-          <th key={i}>{data.confectionPage[id].name}</th>
-          <th key={i}>{data.confectionPage[id].description}</th>
-          <th key={i}>dabloons!</th>
-        </tr>
-    );            
+    return(
+      <>
+        <p>Vous n'avez pas d'articles dans le panier.</p>
+        <p>Consultez nos confections en suivant le lien ci dessous:</p>
+        <Link to="/confections">Confections</Link>
+      </>
+    )
   }
-  return(elementList);
+  return(
+    <table>
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Options</th>
+          <th>Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        {DisplayCartElements(cart)}
+      </tbody>
+    </table>
+  );
 }
 
 function Panier() {
@@ -26,14 +62,7 @@ function Panier() {
     <div className="content-container">
       <div>
         <h2>Panier</h2>
-        <table style={{border: "solid black 1px"}}>
-          <tr>
-            <th>Article</th>
-            <th>Détails</th>
-            <th>Prix</th>
-          </tr>
           {showCartList()}
-        </table>
       </div>
     </div>
   )

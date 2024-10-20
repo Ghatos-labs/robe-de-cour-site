@@ -3,118 +3,152 @@
     [{
         "id": "eleve",
         "name": "Élève avocat",
-        "isRobe": true,
         "description": "Lorem ipsum dolor si amet.",
+        "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Tour_de_cou": 0,
+            "Carrure_dos": 0,
+            "Tour_de_taille": 0,
+            "Longueur_de_bras": 0,
+            "Toise": 0,
+            "Taille_de_costume": 0
         },
-        "price": []
+        "price": [50, 75, 100]
     },
     {
         "id": "avocat",
         "name": "Avocat",
-        "isRobe": true,
         "description": "Les pommes de terre, c'est cool!",
+        "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Tour_de_cou": 0,
+            "Carrure_dos": 0,
+            "Tour_de_taille": 0,
+            "Longueur_de_bras": 0,
+            "Toise": 0,
+            "Taille_de_costume": 0
         },
-        "price": []
+        "price": [50, 75, 100]
     },
     {
         "id": "auditeur",
         "name": "Auditeur de justice",
-        "isRobe": true,
         "description": "Les pommes de terre, c'est cool!",
+        "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Tour_de_cou": 0,
+            "Carrure_dos": 0,
+            "Tour_de_taille": 0,
+            "Longueur_de_bras": 0,
+            "Toise": 0,
+            "Taille_de_costume": 0
         },
-        "price": []
+        "price": [50, 75, 100]
     },
     {
         "id": "magistrat",
         "name": "Magistrat",
-        "isRobe": true,
         "description": "Les pommes de terre, c'est cool!",
+        "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"]
+            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Tour_de_cou": 0,
+            "Carrure_dos": 0,
+            "Tour_de_taille": 0,
+            "Longueur_de_bras": 0,
+            "Tour_de_tête": 0,
+            "Toise": 0,
+            "Taille_de_costume": 0
         },
-        "price": []
+        "price": [50, 75, 100]
     },
     {
         "id": "rabat",
         "name": "Rabat",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
+        "category": "Accessoires",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"]
         },
-        "price": []
+        "price": [50, 75, 100]
     },
     {
         "id": "gants",
         "name": "Paire de gants",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "epitoge",
         "name": "Épitoge",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "housse",
         "name": "Housse",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "fourrure",
         "name": "Rang de fourrure",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "sac",
         "name": "Sac de transport",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "noeud",
         "name": "Noeud papillon",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "boutons",
         "name": "Boutons fantaisies",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "ceinture",
         "name": "Ceinture",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     },
     {
         "id": "toque",
         "name": "Toque",
-        "isRobe": false,
         "description": "Lorem ipsum dolor si amet.",
-        "price": 0
+        "category": "Accessoires",
+        "options": {},
+        "price": [150]
     }]
 }

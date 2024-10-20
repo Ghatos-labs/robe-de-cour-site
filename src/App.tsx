@@ -1,6 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import { Store } from './components/store.tsx'
 
 import './style.css'
 
@@ -17,18 +15,16 @@ import Article from './components/article.tsx'
 function App() {
   return(
     <>
-      <Provider store={Store}>
-        <Navbar/>
-        <Banner/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/confections" element={<Confections/>}/>
-          <Route path="/confections/:articleID" element={<Article/>}/>
-          <Route path="/contacter" element={<Contact/>}/>
-          <Route path="/panier" element={<Panier/>}/>
-        </Routes>
-        <Footer/>
-      </Provider>
+      <Navbar/>
+      <Banner/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/confections" element={<Confections/>}/>
+        <Route path="/confections/:articleID" element={<Article/>}/>
+        <Route path="/contacter" element={<Contact/>}/>
+        <Route path="/panier" element={<Panier/>}/>
+      </Routes>
+      <Footer/>
     </>
   )
 }
