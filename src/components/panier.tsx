@@ -4,6 +4,10 @@ import { Product } from '../redux/actionTypes.ts'
 import { Link } from "react-router-dom";
 import { RootState } from "@reduxjs/toolkit/query";
 
+// const GenerateOptions = (cart: Product[]) => {
+//   cart[0].options
+// }
+
 const DisplayCartElements = (cart: Product[]) => {
   const elementList: JSX.Element[] = [];
   const dispatch = useAppDispatch();
@@ -17,7 +21,7 @@ const DisplayCartElements = (cart: Product[]) => {
     elementList.push(
       <tr>
         <td>{cart[i].name}</td>
-        <td>{cart[i].description}</td>
+        <td>{cart[i].options}</td>
         <td>{cart[i].price}</td>
         <td><button onClick={() => handleRemove(cart[i].id)}>Supprimer l'article</button></td>
       </tr>

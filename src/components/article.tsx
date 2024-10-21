@@ -33,14 +33,14 @@ const DisplayOptions = () => {
             for (let j = 0; j < Object.keys(materialProp).length; j++)
             {
                 optionsList.push(
-                    <option key={j} value={prop}>{materialProp[j]}</option>
+                    <option key={j}>{materialProp[j]}</option>
                 )
             }
             
             elementList.push(
             <>
                 <label htmlFor={prop}>{finalText}</label>
-                <select>
+                <select id={"form-input-" + i}>
                     {optionsList}
                 </select>
             </>
@@ -51,9 +51,9 @@ const DisplayOptions = () => {
             elementList.push(
                 <>
                     <label key={i * 2 - 1} htmlFor={prop}>{finalText}</label>
-                    <input key={i * 2} type="text" name={prop}></input>
+                    <input key={i * 2} type="text" name={prop} id={"form-input-" + i}></input>
                 </>
-            );            
+            );
         }
     }
 
