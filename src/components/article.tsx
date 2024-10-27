@@ -19,8 +19,7 @@ const ApplyOptions = (elemID: number) => {
 
     for (let i = 0; i < propsList.length; i++)
     {
-        const finalText = propsList[i].replace(/_/g, " ");
-        const optionValue = document.getElementById(propsList[i]).value
+        const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement)?.value
         optionList.push(optionValue);
     }
     return (optionList);
@@ -47,13 +46,13 @@ const DisplayOptions = () => {
                 if (j == 0)
                 {
                     optionsList.push(
-                        <option selected key={j}>{materialProp[j]}</option>
+                        <option defaultValue={"selected"}>{materialProp[j]}</option>
                     )
                 }
                 else
                 {
                     optionsList.push(
-                        <option key={j}>{materialProp[j]}</option>
+                        <option>{materialProp[j]}</option>
                     )
                 }
             }
@@ -71,8 +70,8 @@ const DisplayOptions = () => {
         {
             elementList.push(
                 <>
-                    <label key={i * 2 - 1} htmlFor={prop}>{finalText}</label>
-                    <input key={i * 2} type="text" name={prop} id={prop}></input>
+                    <label htmlFor={prop}>{finalText}</label>
+                    <input type="text" name={prop} id={prop}></input>
                 </>
             );
         }
