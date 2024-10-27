@@ -3,10 +3,22 @@ import { removeFromCart } from '../redux/actionTypes';
 import { Product } from '../redux/actionTypes.ts'
 import { Link } from "react-router-dom";
 import { RootState } from "@reduxjs/toolkit/query";
+import data from "./confections-data.json";
 
-// const GenerateOptions = (cart: Product[]) => {
-//   cart[0].options
-// }
+const GenerateOptions = (cart: Product[], id: number) => {
+  const elementList: JSX.Element[] = [];
+
+  for (let i = 0; i < cart[id].options.length ; i++)
+  {
+    const option = Object.keys(data.confectionPage[id].options);
+    const finalText = option[i].replace(/_/g, " ");
+
+    elementList.push(
+      <p>{finalText + ": " + cart[id].options[i]}</p>
+    )
+  }
+  return (elementList)
+}
 
 const DisplayCartElements = (cart: Product[]) => {
   const elementList: JSX.Element[] = [];
@@ -21,7 +33,7 @@ const DisplayCartElements = (cart: Product[]) => {
     elementList.push(
       <tr>
         <td>{cart[i].name}</td>
-        <td>{cart[i].options}</td>
+        <td>{GenerateOptions(cart, i)}</td>
         <td>{cart[i].price}</td>
         <td><button onClick={() => handleRemove(cart[i].id)}>Supprimer l'article</button></td>
       </tr>

@@ -6,7 +6,7 @@ export interface Product {
     name: string;
     description: string;
     price: number;
-    options: string;
+    options: any[];
   }
 
 // Define types for the actions

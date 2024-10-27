@@ -12,35 +12,56 @@ const getArticleID = () => {
     return id;
 }
 
+const ApplyOptions = (elemID: number) => {
+    const optionsData = data.confectionPage[elemID].options;
+    const propsList = Object.keys(optionsData);
+    const optionList: any[] = [];
+
+    for (let i = 0; i < propsList.length; i++)
+    {
+        const finalText = propsList[i].replace(/_/g, " ");
+        const optionValue = document.getElementById(propsList[i]).value
+        optionList.push(optionValue);
+    }
+    return (optionList);
+}
+
 const DisplayOptions = () => {
-    const elemID = getArticleID();
     const elementList: JSX.Element[] = [];
-    // const optionsList: JSX.Element[] = [];
+    const elemID = getArticleID();
     const optionsData = data.confectionPage[elemID].options;
     const propsList = Object.keys(optionsData);
 
-    for (let i = 0; i < propsList.length ; i++ )
+    for (let i = 0; i < propsList.length; i++ )
     {
         const prop = propsList[i];  
         const propType = typeof optionsData[prop as keyof typeof optionsData];
         const finalText = prop.replace(/_/g, " ");
+        const materialProp = optionsData[propsList[i] as keyof typeof optionsData] as string[];
 
         if (propType === "object")
         {
             const optionsList: JSX.Element[] = [];
-            const materialProp = optionsData[propsList[i] as keyof typeof optionsData] as string[];
-
             for (let j = 0; j < Object.keys(materialProp).length; j++)
             {
-                optionsList.push(
-                    <option key={j}>{materialProp[j]}</option>
-                )
+                if (j == 0)
+                {
+                    optionsList.push(
+                        <option selected key={j}>{materialProp[j]}</option>
+                    )
+                }
+                else
+                {
+                    optionsList.push(
+                        <option key={j}>{materialProp[j]}</option>
+                    )
+                }
             }
             
             elementList.push(
             <>
                 <label htmlFor={prop}>{finalText}</label>
-                <select id={"form-input-" + i}>
+                <select id={prop}>
                     {optionsList}
                 </select>
             </>
@@ -51,7 +72,7 @@ const DisplayOptions = () => {
             elementList.push(
                 <>
                     <label key={i * 2 - 1} htmlFor={prop}>{finalText}</label>
-                    <input key={i * 2} type="text" name={prop} id={"form-input-" + i}></input>
+                    <input key={i * 2} type="text" name={prop} id={prop}></input>
                 </>
             );
         }
@@ -61,8 +82,6 @@ const DisplayOptions = () => {
 }
 
 function Article() {
-    //@ts-ignore
-    //const count = useSelector((state) => state.counter.count);
     const dispatch = useAppDispatch();
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID];
@@ -87,7 +106,7 @@ function Article() {
                         name: elemAdress.name,
                         description: elemAdress.description,
                         price: elemAdress.price[0],
-                        options: ""
+                        options: ApplyOptions(elemID)
                     })}>ajouter au panier</button>
                 </div>
             </div>
