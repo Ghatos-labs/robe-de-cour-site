@@ -4,6 +4,72 @@ import { Product } from '../redux/actionTypes.ts'
 import { Link } from "react-router-dom";
 import { RootState } from "@reduxjs/toolkit/query";
 import data from "./confections-data.json";
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
+const invoice = new jsPDF();
+
+const GeneratePDFTable = (cart: Product[]) => {
+  const elementList: JSX.Element[] = [];
+
+  for (let i = 0; i < cart.length ; i++)
+  {
+    const optionList: JSX.Element[] = [];
+    for (let j = 0; j < cart[i].options.length ; j++)
+    {
+      optionList.push(
+        <p>{cart[i].options[j]}<br></br></p>
+      )
+    }
+    elementList.push(
+      <tr>
+        <th>{cart[i].name}</th>
+        <th>{optionList}</th>
+        <th>{cart[i].price}</th>
+      </tr>
+    )
+  }
+
+  return (
+    <table id="PDF-table" style={{display: "none"}}>
+      {elementList}
+    </table>
+  )
+}
+const GeneratePDF = (cart: Product[]) => {
+  autoTable(invoice, {
+    head: [
+      ['Facture Robe de Cour'],
+    ],
+  })
+  autoTable(invoice, {
+    body: [
+      ['Nom prénom', 'Nom prénom 2'],
+      ['Adresse', 'Adresse'],
+      ['Contact', 'Contact'],
+    ],
+  })
+  // autoTable(invoice, {
+  //   head: [['Produit', 'Options', 'Prix']],
+  //   startY: 50,
+  //   styles: {
+  //     fontSize: 15,
+  //     cellWidth: 'wrap'
+  //   },
+  //   body: [
+  //     [cart[0].name, "lorem ipsum", cart[0].price],
+  //   ],
+  // })
+
+    autoTable(invoice, {
+      head: [['Produit', 'Options', 'Prix']],
+      html: '#PDF-table'
+  })
+
+  invoice.save("Facture-Robe-de-Cour.pdf");
+
+  return 0
+}
 
 const GenerateOptions = (cart: Product[], id: number) => {
   const elementList: JSX.Element[] = [];
@@ -43,6 +109,8 @@ const DisplayCartElements = (cart: Product[]) => {
   return elementList;
 }
 
+
+
 const showCartList = () => {
   //@ts-ignore
   const cart = useAppSelector((state: RootState) => state.cart);
@@ -58,18 +126,23 @@ const showCartList = () => {
     )
   }
   return(
-    <table>
-      <thead>
-        <tr>
-          <th>Article</th>
-          <th>Options</th>
-          <th>Prix</th>
-        </tr>
-      </thead>
-      <tbody>
-        {DisplayCartElements(cart)}
-      </tbody>
-    </table>
+    <>
+      {GeneratePDFTable(cart)}
+      <table>
+        <thead>
+          <tr>
+            <th>Article</th>
+            <th>Options</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          {DisplayCartElements(cart)}
+        </tbody>
+      </table>
+
+      <button onClick={() => GeneratePDF(cart)}>Générer le PDF</button>
+    </>
   );
 }
 

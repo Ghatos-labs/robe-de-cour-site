@@ -7,7 +7,7 @@
         "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -15,7 +15,8 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100]
+        "price": [50, 75, 100],
+        "lining_price": [0, 20, 20, 20, 20]
     },
     {
         "id": "avocat",
@@ -24,7 +25,7 @@
         "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -32,7 +33,8 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100]
+        "price": [50, 75, 100],
+        "lining_price": [0, 20, 20, 20, 20]
     },
     {
         "id": "auditeur",
@@ -41,7 +43,7 @@
         "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -49,7 +51,8 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100]
+        "price": [50, 75, 100],
+        "lining_price": [0, 20, 20, 20, 20]
     },
     {
         "id": "magistrat",
@@ -58,7 +61,7 @@
         "category": "Robes",
         "options": {
             "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["noir", "blanc", "bleu", "rouge"],
+            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -67,7 +70,8 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100]
+        "price": [50, 75, 100],
+        "lining_price": [0, 20, 20, 20, 20]
     },
     {
         "id": "rabat",

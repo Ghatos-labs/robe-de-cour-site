@@ -25,6 +25,45 @@ const ApplyOptions = (elemID: number) => {
     return (optionList);
 }
 
+const ApplyPrice = (elemID: number) => {
+    const optionsData = data.confectionPage[elemID];
+    const propsList = Object.keys(optionsData.options);
+
+    const getElementId = (id: number) => {
+        return ((document.getElementById(propsList[id]) as any)?.selectedIndex)
+    }
+
+    const tissuID = getElementId(0)
+    const doublureID = getElementId(1)
+
+    const fixTissuValue = () => {
+        const value = optionsData.price?.[tissuID]
+        if (value == undefined)
+        {
+            return optionsData.price?.[0]
+        }
+        else
+        {
+            return value
+        }
+    }
+    const fixDoublureValue = () => {
+        const value = optionsData.lining_price?.[doublureID]
+        if (value == undefined)
+        {
+            return 0
+        }
+        else
+        {
+            return value
+        }
+    }
+
+
+    const finalPrice = fixTissuValue() + fixDoublureValue()
+    return (finalPrice);
+}
+
 const DisplayOptions = () => {
     const elementList: JSX.Element[] = [];
     const elemID = getArticleID();
@@ -46,12 +85,14 @@ const DisplayOptions = () => {
                 if (j == 0)
                 {
                     optionsList.push(
+                        //@ts-ignore
                         <option defaultValue={"selected"}>{materialProp[j]}</option>
                     )
                 }
                 else
                 {
                     optionsList.push(
+                        //@ts-ignore
                         <option>{materialProp[j]}</option>
                     )
                 }
@@ -104,7 +145,7 @@ function Article() {
                         id: uuidv4(),
                         name: elemAdress.name,
                         description: elemAdress.description,
-                        price: elemAdress.price[0],
+                        price: ApplyPrice(elemID),
                         options: ApplyOptions(elemID)
                     })}>ajouter au panier</button>
                 </div>
