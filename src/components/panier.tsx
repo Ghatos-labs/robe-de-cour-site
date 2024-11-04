@@ -7,8 +7,6 @@ import data from "./confections-data.json";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
-const invoice = new jsPDF();
-
 const GeneratePDFTable = (cart: Product[]) => {
   const elementList: JSX.Element[] = [];
 
@@ -22,21 +20,30 @@ const GeneratePDFTable = (cart: Product[]) => {
       )
     }
     elementList.push(
-      <tr>
-        <th>{cart[i].name}</th>
-        <th>{optionList}</th>
-        <th>{cart[i].price}</th>
-      </tr>
+        <tr>
+          <th>{cart[i].name}</th>
+          <th>{optionList}</th>
+          <th>{cart[i].price}</th>
+        </tr>        
     )
   }
 
   return (
     <table id="PDF-table" style={{display: "none"}}>
-      {elementList}
+      <thead>
+        <tr>Produit</tr>
+        <tr>Options</tr>
+        <tr>Prix</tr>
+      </thead>
+      <tbody>
+        {elementList}
+      </tbody>
     </table>
   )
 }
 const GeneratePDF = (cart: Product[]) => {
+  const invoice = new jsPDF();
+
   autoTable(invoice, {
     head: [
       ['Facture Robe de Cour'],
@@ -60,10 +67,9 @@ const GeneratePDF = (cart: Product[]) => {
   //     [cart[0].name, "lorem ipsum", cart[0].price],
   //   ],
   // })
-
-    autoTable(invoice, {
-      head: [['Produit', 'Options', 'Prix']],
-      html: '#PDF-table'
+  autoTable(invoice, {
+    head: [['LOREM', 'IPSUM', 'DOLOR']],
+    html: '#PDF-table'
   })
 
   invoice.save("Facture-Robe-de-Cour.pdf");
