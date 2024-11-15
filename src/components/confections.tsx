@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 import data from "./confections-data.json";
 
 const SortItemsByCategory = () => {
@@ -29,22 +30,22 @@ const DisplayProducts = () => {
   {
     elementList.push
     (
-      <h2>{sortedItems[i][0].category}</h2>
+      <h2 key={uuidv4()}>{sortedItems[i][0].category}</h2>
     )
     const categoryContent: JSX.Element[] = [];
     for (let j = 0; j < sortedItems[i].length; j++)
     {
       categoryContent.push
       (
-        <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn">
-          <img src="https://placehold.co/100x150" key={j}></img>
-          <h3>{sortedItems[i][j].name}</h3>
+        <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn btn-underline-effect" key={uuidv4()}>
+          <img className="confection-btn-img" src={"/img/" + sortedItems[i][j].id + "-img.jpg"} key={uuidv4()}></img>
+          <h3 className="confection-btn-title">{sortedItems[i][j].name}</h3>
         </Link>
       )
     }
     elementList.push
     (
-      <div className="confections-container">
+      <div className="confections-container" key={uuidv4()}>
         {categoryContent}
       </div>
     )

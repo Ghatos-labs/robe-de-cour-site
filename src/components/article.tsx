@@ -85,35 +85,35 @@ const DisplayOptions = () => {
                 if (j == 0)
                 {
                     optionsList.push(
-                        //@ts-ignore
-                        <option defaultValue={"selected"}>{materialProp[j]}</option>
+                        <option defaultValue={"selected"} key={uuidv4()}>{materialProp[j]}</option>
                     )
                 }
                 else
                 {
                     optionsList.push(
-                        //@ts-ignore
-                        <option>{materialProp[j]}</option>
+                        <option key={uuidv4()}>{materialProp[j]}</option>
                     )
                 }
             }
             
             elementList.push(
-            <>
+            <div key={uuidv4()}>
                 <label htmlFor={prop}>{finalText}</label>
-                <select id={prop}>
+                <br></br>
+                <select id={prop} className="form-dropdown-style" required>
                     {optionsList}
                 </select>
-            </>
+            </div>
             );
         }
         else if (propType === "number")
         {
             elementList.push(
-                <>
-                    <label htmlFor={prop}>{finalText}</label>
-                    <input type="text" name={prop} id={prop}></input>
-                </>
+                <div key={uuidv4()}>
+                    <label htmlFor={prop}>{finalText + " (en cm)"}</label>
+                    <br></br>
+                    <input type="number" min="0" id={prop} className="form-text-style" required></input>
+                </div>
             );
         }
     }
@@ -130,24 +130,35 @@ function Article() {
         dispatch(addToCart(product));
     };
 
+    const addItemToCart = () => handleAddToCart({
+        id: uuidv4(),
+        name: elemAdress.name,
+        description: elemAdress.description,
+        price: ApplyPrice(elemID),
+        options: ApplyOptions(elemID)
+    })
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        addItemToCart();
+    };
+
     return (
         <div className="content-container">
             <div id="article-container">
-                <Link to="/confections" className="return-btn global-btn-style">Retour</Link>
+                <Link to="/confections" className="btn-underline-effect">Retour</Link>
                 <h1>{elemAdress.name}</h1>
-                <div>
-                    <img src={"/img/" + elemAdress.id + "-robe-img.jpg"}></img>
-                    <p id="article-description">{elemAdress.description}</p>
-                    <form id="article-form">
-                        {DisplayOptions()}
-                    </form>
-                    <button onClick={() => handleAddToCart({
-                        id: uuidv4(),
-                        name: elemAdress.name,
-                        description: elemAdress.description,
-                        price: ApplyPrice(elemID),
-                        options: ApplyOptions(elemID)
-                    })}>ajouter au panier</button>
+                <div id="sub-article-container">
+                    <div className="sub-article-pannel">
+                        <img className="article-img" src={"/img/" + elemAdress.id + "-img.jpg"}></img>
+                    </div>
+                    <div className="sub-article-pannel">
+                        <form id="article-form" onSubmit={handleSubmit}>
+                        <p id="article-description">{elemAdress.description}</p>   
+                            {DisplayOptions()}
+                            <button type="submit">ajouter au panier</button>
+                        </form>                        
+                    </div>
                 </div>
             </div>
         </div>

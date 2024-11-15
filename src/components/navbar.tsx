@@ -25,10 +25,10 @@ function closeNavbar()
 function NavButtons() {
   return(
     <div>
-      <Link to="/" className="navbar-btn" onClick={closeNavbar}>Accueil</Link>
-      <Link to="/confections" className="navbar-btn" onClick={closeNavbar}>Confections</Link>
-      <Link to="/contacter" className="navbar-btn" onClick={closeNavbar}>Nous contacter</Link>
-      <Link to="/panier" className="navbar-btn" onClick={closeNavbar}>Panier</Link>
+      <Link to="/" className="navbar-btn btn-underline-effect" onClick={closeNavbar}>Accueil</Link>
+      <Link to="/confections" className="navbar-btn btn-underline-effect" onClick={closeNavbar}>Confections</Link>
+      <Link to="/contacter" className="navbar-btn btn-underline-effect" onClick={closeNavbar}>Nous contacter</Link>
+      <Link to="/panier" className="navbar-btn btn-underline-effect" onClick={closeNavbar}>Panier</Link>
     </div>
   )
 }
@@ -60,11 +60,15 @@ function Navbar() {
   return (
     <>
       <div id="mobile-navbar">
-        <a className="menu-toggle-btn" id="mobile-menu-btn" onClick={toggleNavbar}>X</a>
+        <a className="menu-toggle-btn" id="mobile-menu-btn" onClick={toggleNavbar}>
+          <img src="cross.svg"></img>
+        </a>
         <NavButtons/>
       </div>
       <div id="desktop-navbar">
-        <a className="menu-toggle-btn" id="desktop-menu-btn" onClick={toggleNavbar}>+</a>
+        <a className="menu-toggle-btn" id="desktop-menu-btn" onClick={toggleNavbar}>
+          <img src="settings.svg"></img>
+        </a>
         <NavButtons/>
       </div>
     </>

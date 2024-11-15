@@ -1,8 +1,11 @@
 function Banner() {
   return (
       <div className="banner">
+        <div id="banner-title-container">
+          <img src="/img/icon.svg"></img>
           <h1>Robe de Cour</h1>
-          <p>Lorem ipsum dolor si amet</p>
+        </div>
+        {/* <p>Lorem ipsum dolor si amet</p> */}
       </div>
   )
 }
