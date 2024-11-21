@@ -53,7 +53,9 @@ const DisplayProducts = () => {
 
   return(
     <div className="content-container">
-      {elementList}
+      <div>
+        {elementList}        
+      </div>
     </div>
   )
 }

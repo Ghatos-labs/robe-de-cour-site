@@ -156,7 +156,7 @@ function Article() {
                         <form id="article-form" onSubmit={handleSubmit}>
                         <p id="article-description">{elemAdress.description}</p>   
                             {DisplayOptions()}
-                            <button type="submit">ajouter au panier</button>
+                            <button type="submit">Ajouter au panier</button>
                         </form>                        
                     </div>
                 </div>

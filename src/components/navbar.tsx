@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Cross from "/img/cross.svg";
+import Options from "/img/settings.svg"
 
 var isNavbarDeployed = false;
 function toggleNavbar()
@@ -61,13 +63,13 @@ function Navbar() {
     <>
       <div id="mobile-navbar">
         <a className="menu-toggle-btn" id="mobile-menu-btn" onClick={toggleNavbar}>
-          <img src="cross.svg"></img>
+          <img src={Cross}></img>
         </a>
         <NavButtons/>
       </div>
       <div id="desktop-navbar">
         <a className="menu-toggle-btn" id="desktop-menu-btn" onClick={toggleNavbar}>
-          <img src="settings.svg"></img>
+          <img src={Options}></img>
         </a>
         <NavButtons/>
       </div>

@@ -258,6 +258,15 @@ input, select
   width: 75px;
   height: auto;
 }
+.homepage-img
+{
+  position: relative;
+  border-radius: var(--img-border-radius);
+  width: 60%;
+  max-width: 750px;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .confections-container
 {
   display: grid;
@@ -373,9 +382,13 @@ tr:nth-child(even)
 {
   .content-container, #footer
   {
-    padding-left: 0%;
-    padding-right: 0%;
-    width: 1000px;
+    display: flex;
+    justify-content: center;
+  }  
+  .content-container div, #footer div
+  {
+    display: grid;
+    max-width: 1000px;
   }
   .confections-container
   {
