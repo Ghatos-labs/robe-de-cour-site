@@ -3,11 +3,11 @@
     [{
         "id": "eleve",
         "name": "Élève avocat",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "Un travail raffiné, exécuté dans des tissus soigneusement sélectionnés, haut de gamme. Votre tenue complète: la robe à vos mesures, brodée à votre nom, l’épitoge, le rabat, un jeu de boutons supplémentaires et un sac de transport.",
         "category": "Robes",
         "options": {
-            "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
+            "Type": ["Ténor", "Baryton", "Pergolèse", "Soprano"],
+            "Doublure": ["Sans doublure", "Noir", "Blanc", "Bleu", "Rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -15,17 +15,17 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100],
-        "lining_price": [0, 20, 20, 20, 20]
+        "price": [950, 850, 750, 690],
+        "lining_price": [0, 90, 90, 90, 90]
     },
     {
         "id": "avocat",
         "name": "Avocat",
-        "description": "Les pommes de terre, c'est cool!",
+        "description": "Un travail raffiné, exécuté dans des tissus soigneusement sélectionnés, haut de gamme. Votre tenue complète: la robe à vos mesures, brodée à votre nom, l’épitoge, le rabat, un jeu de boutons supplémentaires et un sac de transport.",
         "category": "Robes",
         "options": {
-            "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
+            "Type": ["Ténor", "Baryton", "Pergolèse", "Soprano"],
+            "Doublure": ["Sans doublure", "Noir", "Blanc", "Bleu", "Rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -33,17 +33,17 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100],
-        "lining_price": [0, 20, 20, 20, 20]
+        "price": [1045, 935, 825, 759],
+        "lining_price": [0, 90, 90, 90, 90]
     },
     {
         "id": "auditeur",
         "name": "Auditeur de justice",
-        "description": "Les pommes de terre, c'est cool!",
+        "description": "Un travail raffiné, exécuté dans des tissus soigneusement sélectionnés, haut de gamme. Votre tenue complète: la robe à vos mesures, brodée à votre nom, l’épitoge, le rabat, un jeu de boutons supplémentaires et un sac de transport.",
         "category": "Robes",
         "options": {
-            "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
+            "Type": ["Baryton", "Soprano"],
+            "Doublure": ["Sans doublure", "Noir", "Blanc", "Bleu", "Rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -51,17 +51,17 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100],
-        "lining_price": [0, 20, 20, 20, 20]
+        "price": [1050, 950],
+        "lining_price": [0, 90, 90, 90, 90]
     },
     {
         "id": "magistrat",
         "name": "Magistrat",
-        "description": "Les pommes de terre, c'est cool!",
+        "description": "Un travail raffiné, exécuté dans des tissus soigneusement sélectionnés, haut de gamme. Votre tenue complète: la robe à vos mesures, brodée à votre nom, l’épitoge, le rabat, un jeu de boutons supplémentaires et un sac de transport.",
         "category": "Robes",
         "options": {
-            "Tissu": ["cotton", "polyester", "soie"],
-            "Doublure": ["Sans doublure", "noir", "blanc", "bleu", "rouge"],
+            "Type": ["Baryton", "Soprano"],
+            "Doublure": ["Sans doublure", "Noir", "Blanc", "Bleu", "Rouge"],
             "Tour_de_cou": 0,
             "Carrure_dos": 0,
             "Tour_de_taille": 0,
@@ -70,89 +70,89 @@
             "Toise": 0,
             "Taille_de_costume": 0
         },
-        "price": [50, 75, 100],
-        "lining_price": [0, 20, 20, 20, 20]
+        "price": [1050, 950],
+        "lining_price": [0, 90, 90, 90, 90]
     },
     {
         "id": "rabat",
         "name": "Rabat",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {
-            "Tissu": ["cotton", "polyester", "soie"]
+            "Motif": ["Lignes", "Carreaux", "Fleurs"]
         },
-        "price": [50, 75, 100]
+        "price": [30, 30, 30]
     },
     {
         "id": "gants",
         "name": "Paire de gants",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [20]
     },
     {
         "id": "epitoge",
         "name": "Épitoge",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [50]
     },
     {
         "id": "housse",
         "name": "Housse",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [40]
     },
     {
         "id": "fourrure",
         "name": "Rang de fourrure",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [20]
     },
     {
         "id": "sac",
         "name": "Sac de transport",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [30]
     },
     {
         "id": "noeud",
         "name": "Noeud papillon",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [20]
     },
     {
         "id": "boutons",
         "name": "Boutons fantaisies",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [40]
     },
     {
         "id": "ceinture",
         "name": "Ceinture",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [130]
     },
     {
         "id": "toque",
         "name": "Toque",
-        "description": "Lorem ipsum dolor si amet.",
+        "description": "",
         "category": "Accessoires",
         "options": {},
-        "price": [150]
+        "price": [140]
     }]
 }

@@ -69,6 +69,7 @@ button
 .btn-underline-effect, button
 {
   border: none;
+  width: fit-content;
   background-color: transparent;
   font-family: "PT Serif", serif;
   font-size: 1rem;
