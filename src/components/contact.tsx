@@ -3,9 +3,12 @@ function Contact() {
   return (
     <div className="content-container">
       <div className="main-webpage-section">
-        <h2>Nous contacter</h2>
-        <p>01 23 45 67 89</p>
-        <img src="https://placehold.co/300x400"></img>
+        <p>Robe de Cour vous accueille du mardi au samedi de 10 heures à 18 heures sans interruption.</p>
+        <h2>Adresse</h2>
+        <p>5 rue Emile Gilbert, 75012 Paris</p>
+        <h2>Coordonnées de contact</h2>
+        <p>Téléphone: 01 40 02 03 55</p>
+        <p>E-mail: <a href="mailto:eric.billion@wanadoo.fr" className="btn-underline-effect">eric.billion@wanadoo.fr</a></p>
       </div>
     </div>
   )

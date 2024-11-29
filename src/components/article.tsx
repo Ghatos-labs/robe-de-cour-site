@@ -1,9 +1,11 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import data from "./confections-data.json";
 import { useAppDispatch } from '../redux/hooks';
 import { addToCart } from '../redux/actionTypes';
 import { Product } from '../redux/actionTypes';
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 const getArticleID = () => {
     const {articleID} = useParams();
@@ -64,7 +66,7 @@ const ApplyPrice = (elemID: number) => {
     return (finalPrice);
 }
 
-const DisplayOptions = () => {
+const DisplayOptions = (setPrice: any) => {
     const elementList: JSX.Element[] = [];
     const elemID = getArticleID();
     const optionsData = data.confectionPage[elemID].options;
@@ -85,22 +87,22 @@ const DisplayOptions = () => {
                 if (j == 0)
                 {
                     optionsList.push(
-                        <option defaultValue={"selected"} key={uuidv4()}>{materialProp[j]}</option>
+                        <option defaultValue={"selected"} key={i + j + "-child"}>{materialProp[j]}</option>
                     )
                 }
                 else
                 {
                     optionsList.push(
-                        <option key={uuidv4()}>{materialProp[j]}</option>
+                        <option key={i + j + "-child"}>{materialProp[j]}</option>
                     )
                 }
             }
             
             elementList.push(
-            <div key={uuidv4()}>
+            <div key={i + "-dropdown-parent"}>
                 <label htmlFor={prop}>{finalText}</label>
                 <br></br>
-                <select id={prop} className="form-dropdown-style" required>
+                <select id={prop} className="form-dropdown-style" onChange={() => setPrice(ApplyPrice(elemID))} required>
                     {optionsList}
                 </select>
             </div>
@@ -122,9 +124,12 @@ const DisplayOptions = () => {
 }
 
 function Article() {
+    const tva = 1.2;
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID];
+    const [price, setPrice] = useState(elemAdress.price[0]);
 
     const handleAddToCart = (product: Product) => {
         dispatch(addToCart(product));
@@ -141,6 +146,8 @@ function Article() {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         addItemToCart();
+        alert("Article ajouté au panier!");
+        navigate('/confections');
     };
 
     return (
@@ -155,7 +162,9 @@ function Article() {
                     <div className="sub-article-pannel">
                         <form id="article-form" onSubmit={handleSubmit}>
                         <p id="article-description">{elemAdress.description}</p>   
-                            {DisplayOptions()}
+                            {DisplayOptions(setPrice)}
+                            <h3 id="TTC-price">Prix TTC: {price}€</h3>
+                            <h3 id="HT-price">Prix HT: {(price / tva).toFixed(2)}€</h3>
                             <button type="submit">Ajouter au panier</button>
                         </form>                        
                     </div>

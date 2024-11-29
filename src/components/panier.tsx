@@ -8,13 +8,15 @@ import data from "./confections-data.json";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
+const tva = 1.2;
+
 const GeneratePDFTable = (cart: Product[]) => {
   const elementList: JSX.Element[] = [];
 
   for (let i = 0; i < cart.length ; i++)
   {
     const optionList: JSX.Element[] = [];
-    const option = Object.keys(data.confectionPage[i].options);
+    const option = Object.keys(data.confectionPage[data.confectionPage.findIndex((Object) => Object.name == cart[i].name)].options);
     var unit = ""
     for (let j = 0; j < cart[i].options.length ; j++)
     {
@@ -41,7 +43,7 @@ const GeneratePDFTable = (cart: Product[]) => {
         <tr key={uuidv4()}>
           <th>{cart[i].name}</th>
           <th>{optionList}</th>
-          <th>{cart[i].price + "€"}</th>
+          <th>{"TTC: " + cart[i].price + "€"}<br></br>{"HT: " + (cart[i].price / tva).toFixed(2) + "€"}</th>
         </tr>        
     )
   }
@@ -109,8 +111,8 @@ const GeneratePDF = (cart: Product[]) => {
   }
 
   autoTable(invoice, {
-    body: [['Total: ' + totalPrice() + '€']],
-    theme: 'grid',
+    body: [['Total TTC: ' + totalPrice() + '€'], ['Total HT: ' + (totalPrice() / tva).toFixed(2) + '€']],
+    theme: 'plain',
     styles: { 
       valign: 'middle',
       fontSize: 15,
@@ -149,10 +151,14 @@ const GenerateOptions = (cart: Product[], id: number) => {
 
   for (let i = 0; i < cart[id].options.length; i++)
   {
-    const option = Object.keys(data.confectionPage[id].options);
+    const option = Object.keys(data.confectionPage[data.confectionPage.findIndex((Object) => Object.name == cart[id].name)].options);
     var finalText = option[i]?.replace(/_/g, " ");
     var unit: string = ""
 
+    if (option[i] == undefined)
+    {
+      var finalText = "ERROR";
+    }
     if (i >= 2)
     {
       unit = "cm"
@@ -172,6 +178,7 @@ const DisplayCartElements = (cart: Product[]) => {
   const handleRemove = (id: string) => {
     dispatch(removeFromCart(id));
   };
+  console.log(cart);
 
   for (let i = 0; i < cart.length; i++)
   {
@@ -179,7 +186,7 @@ const DisplayCartElements = (cart: Product[]) => {
       <tr key={uuidv4()}>
         <td>{cart[i].name}</td>
         <td>{GenerateOptions(cart, i)}</td>
-        <td>{cart[i].price + " €"}</td>
+        <td>{"TTC: " + cart[i].price + "€"}<br></br>{"HT: " + (cart[i].price / tva).toFixed(2) + "€"}</td>
         <td><button onClick={() => handleRemove(cart[i].id)}>Supprimer l'article</button></td>
       </tr>
     )
@@ -198,7 +205,7 @@ const computePrice = (cart: Product[]) => {
 const showCartList = () => {
   //@ts-ignore
   const cart = useAppSelector((state: RootState) => state.cart);
-
+  
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     GeneratePDF(cart);
@@ -231,7 +238,8 @@ const showCartList = () => {
         </tbody>
       </table>
 
-      <h2>Total: {computePrice(cart)} €</h2>
+      <h2>Total TTC: {computePrice(cart)}€</h2>
+      <h2>Total HT: {(computePrice(cart) / tva).toFixed(2)}€</h2>
 
       <h2>Coordonées de livraison:</h2>
       <form onSubmit={handleSubmit}>
