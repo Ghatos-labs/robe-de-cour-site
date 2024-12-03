@@ -5,7 +5,7 @@ function Banner() {
           <img src="/img/icon.svg"></img>
           <h1>Robe de Cour</h1>
         </div>
-        {/* <p>Lorem ipsum dolor si amet</p> */}
+        <p>Eric Bilion Chaibi & Nordine - Artisans costumier diplômés</p>
       </div>
   )
 }

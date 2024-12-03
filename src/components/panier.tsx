@@ -75,7 +75,7 @@ const GeneratePDF = (cart: Product[]) => {
 
   autoTable(invoice, {
     body: [
-      ['Facture Robe de Cour'],
+      ['Bon de commande Robe de Cour'],
     ],
     theme: 'plain',
     styles: {
@@ -178,7 +178,6 @@ const DisplayCartElements = (cart: Product[]) => {
   const handleRemove = (id: string) => {
     dispatch(removeFromCart(id));
   };
-  console.log(cart);
 
   for (let i = 0; i < cart.length; i++)
   {

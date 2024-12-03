@@ -9,7 +9,6 @@
   --background-color: #ffffff;
   --primary-color: #222222;
   --accent-color: #b91313;
-  /* --accent-transparent-color: #b9131322; */
 
   --mobile-screen-margin: 25px;
   --desktop-screen-margin: 25%;
@@ -246,12 +245,12 @@ input, select
   align-items: center;
   justify-content: center;
   height: var(--banner-height);
+  color: white;
 }
 #banner-title-container
 {
   display: flex;
   align-items: center;
-  color: #ffffff;
 }
 #banner-title-container img
 {
