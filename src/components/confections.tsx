@@ -40,6 +40,7 @@ const DisplayProducts = () => {
         <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn btn-underline-effect" key={uuidv4()}>
           <img className="confection-btn-img" src={"/img/" + sortedItems[i][j].id + "-img.jpg"} key={uuidv4()}></img>
           <h3 className="confection-btn-title">{sortedItems[i][j].name}</h3>
+          <p>À partir de {Math.min(...sortedItems[i][j].price)}€</p>
         </Link>
       )
     }
