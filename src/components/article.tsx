@@ -161,7 +161,8 @@ function Article() {
                     </div>
                     <div className="sub-article-pannel">
                         <form id="article-form" onSubmit={handleSubmit}>
-                        <p id="article-description">{elemAdress.description}</p>   
+                            <p id="article-description">{elemAdress.description}</p>
+                            <p>À partir de {Math.min(...elemAdress.price)}€.</p>
                             {DisplayOptions(setPrice)}
                             <h3 id="TTC-price">Prix TTC: {price}€</h3>
                             <h3 id="HT-price">Prix HT: {(price / tva).toFixed(2)}€</h3>
