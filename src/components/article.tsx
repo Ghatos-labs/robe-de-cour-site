@@ -22,6 +22,7 @@ const ApplyOptions = (elemID: number) => {
     for (let i = 0; i < propsList.length; i++)
     {
         const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement)?.value
+        //const optionValue = (document.querySelector())
         optionList.push(optionValue);
     }
     return (optionList);
@@ -87,7 +88,10 @@ const DisplayOptions = (setPrice: any) => {
                 if (j == 0)
                 {
                     optionsList.push(
-                        <option defaultValue={"selected"} key={i + j + "-child"}>{materialProp[j]}</option>
+                        <>
+                            <option defaultValue={"selected"} key={i + j + "-child"}>{materialProp[j]}</option>
+                            <p>Test</p>
+                        </>
                     )
                 }
                 else
