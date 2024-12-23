@@ -21,8 +21,8 @@ const ApplyOptions = (elemID: number) => {
 
     for (let i = 0; i < propsList.length; i++)
     {
-        const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement)?.value
-        //const optionValue = (document.querySelector())
+        //const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement)?.value
+        const optionValue = ((document.getElementById(propsList[i])?.getElementsByClassName("option-name")[0] as HTMLInputElement | HTMLSelectElement)?.innerText)
         optionList.push(optionValue);
     }
     return (optionList);
@@ -89,15 +89,20 @@ const DisplayOptions = (setPrice: any) => {
                 {
                     optionsList.push(
                         <>
-                            <option defaultValue={"selected"} key={i + j + "-child"}>{materialProp[j]}</option>
-                            <p>Test</p>
+                            <option defaultValue={"selected"} key={i + j + "-child"}>
+                                <p className="option-name">{materialProp[j]}</p>
+                                {" (" + data.confectionPage[elemID].price[j] + "€)"}
+                            </option>
                         </>
                     )
                 }
                 else
                 {
                     optionsList.push(
-                        <option key={i + j + "-child"}>{materialProp[j]}</option>
+                        <option key={i + j + "-child"}>
+                            <p className="option-name">{materialProp[j]}</p>
+                            {" (" + data.confectionPage[elemID].price[j] + "€)"}
+                        </option>
                     )
                 }
             }
