@@ -1,6 +1,10 @@
 
 import { Link } from "react-router-dom"
-import HomeImg from "/img/home-img.jpg"
+import HomeImg1 from "/img/design-1-img.jpg"
+import HomeImg2 from "/img/design-2-img.jpg"
+import HomeImg3 from "/img/design-3-img.jpg"
+import HomeImg4 from "/img/design-4-img.jpg"
+import HomeImg5 from "/img/design-5-img.jpg"
 
 function Home() {
 
@@ -9,10 +13,26 @@ function Home() {
       <div>
         <h2>Notre société</h2>
         <p>Eric et Nordine artisans vous proposent des robes sur mesure, un travail raffiné exécuté dans des tissus soigneusement sélectionnés parmi les meilleurs fournisseurs français. Des robes personnalisables, doublures, passepoil, fermetures aimantées, remonte-manche sont possibles. Un modèle de robe lavable en machine à 30 degrés. Profitez d’une sélection de robe prêtes à plaider.</p>
-        <img className="homepage-img" src={HomeImg}></img>
-        <h2>Commander votre robe</h2>
-        <p>Vous souhaitez commander votre robe? suivez le lien ci-dessous:</p>
-        <Link to="/confections" className="btn-underline-effect">Confections</Link>
+        <div className="homepage-img-container">
+          <img className="homepage-img" src={HomeImg1}></img>
+          <img className="homepage-img" src={HomeImg2}></img>
+        </div>
+        <div className="homepage-img-container">
+          <img className="homepage-img" src={HomeImg3}></img>
+          <img className="homepage-img" src={HomeImg4}></img>
+          <img className="homepage-img" src={HomeImg5}></img>
+        </div>
+        <h2>Comment passer votre commande?</h2>
+        <ul>
+          <li>Rendez-vous sur la <Link to="/confections" className="btn-underline-effect">page de confections</Link> puis sélectionnez les articles et les options que vous désirez.</li>
+          <li>Une fois tout vos articles ajoutés au panier, allez au <Link to="/panier" className="btn-underline-effect">panier</Link> pour obtenir votre facture.</li>
+          <li>Une fois imprimée et signée, envoyez-la avec un chèque par voie postale à l'adresse suivante:
+            <ul>
+              <li>5 rue Emile Gilbert, 75012 Paris</li>
+            </ul>
+          </li>
+          <li>Vous recevrez votre robe sous 5 jours ouvrés.</li>
+        </ul>
       </div>    
     </div>
   )

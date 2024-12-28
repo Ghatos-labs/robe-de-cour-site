@@ -21,7 +21,6 @@ const ApplyOptions = (elemID: number) => {
 
     for (let i = 0; i < propsList.length; i++)
     {
-        //const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement)?.value
         const optionValue = ((document.getElementById(propsList[i])?.getElementsByClassName("option-name")[0] as HTMLInputElement | HTMLSelectElement)?.innerText)
         optionList.push(optionValue);
     }
@@ -85,13 +84,27 @@ const DisplayOptions = (setPrice: any) => {
             const optionsList: JSX.Element[] = [];
             for (let j = 0; j < Object.keys(materialProp).length; j++)
             {
+                var priceText;
+                if (i == 0)
+                {
+                    priceText = " (" + data.confectionPage[elemID].price[j] + "€)";
+                }
+                else if (i == 1)
+                {
+                    //@ts-ignore
+                    priceText = " (" + data.confectionPage[elemID].lining_price[j] + "€)";
+                    if (priceText == undefined)
+                    {
+                        priceText == "";
+                    }
+                }
                 if (j == 0)
                 {
                     optionsList.push(
                         <>
                             <option defaultValue={"selected"} key={i + j + "-child"}>
                                 <p className="option-name">{materialProp[j]}</p>
-                                {" (" + data.confectionPage[elemID].price[j] + "€)"}
+                                {priceText}
                             </option>
                         </>
                     )
@@ -101,7 +114,7 @@ const DisplayOptions = (setPrice: any) => {
                     optionsList.push(
                         <option key={i + j + "-child"}>
                             <p className="option-name">{materialProp[j]}</p>
-                            {" (" + data.confectionPage[elemID].price[j] + "€)"}
+                            {priceText}
                         </option>
                     )
                 }
