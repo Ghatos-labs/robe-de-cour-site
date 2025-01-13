@@ -316,6 +316,13 @@ input, select
   flex-direction: column;
   grid-gap: 15px;
 }
+.article-img-container
+{
+  display: flex;
+  position: relative;
+  gap: 50px;
+  width: 100%;
+}
 .article-img
 {
   width: 50%;
@@ -374,9 +381,16 @@ tr:nth-child(even)
     padding-left: 10%;
     padding-right: 10%;
   }
+  .article-img-container
+  {
+    display: flex;
+    position: relative;
+    width: 100%;
+  }
   .article-img
   {
-    width: 75%;
+    width: 45%;
+    margin: 1%;
   }
   #sub-article-container
   {
