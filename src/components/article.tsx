@@ -60,8 +60,7 @@ const ApplyPrice = (elemID: number) => {
             return value
         }
     }
-
-
+    
     const finalPrice = fixTissuValue() + fixDoublureValue()
     return (finalPrice);
 }
@@ -78,10 +77,18 @@ const DisplayOptions = (setPrice: any, setLiningID: any) => {
         const propType = typeof optionsData[prop as keyof typeof optionsData];
         const finalText = prop.replace(/_/g, " ");
         const materialProp = optionsData[propsList[i] as keyof typeof optionsData] as string[];
-
+    
         if (propType === "object")
         {
             const optionsList: JSX.Element[] = [];
+    
+            const updateDisplay = () => {
+                const listElement = document.getElementById(prop) as HTMLSelectElement;
+                const listElementIndex = listElement.selectedIndex;
+                setPrice(ApplyPrice(elemID));
+                setLiningID(listElementIndex);
+            }
+
             for (let j = 0; j < Object.keys(materialProp).length; j++)
             {
                 var priceText;
@@ -124,7 +131,7 @@ const DisplayOptions = (setPrice: any, setLiningID: any) => {
             <div key={i + "-dropdown-parent"}>
                 <label htmlFor={prop}>{finalText}</label>
                 <br></br>
-                <select id={prop} className="form-dropdown-style" onChange={() => setPrice(ApplyPrice(elemID)) /*+ setLiningID(3)*/} required>
+                <select id={prop} className="form-dropdown-style" onChange={() => updateDisplay()} required>
                     {optionsList}
                 </select>
             </div>
@@ -153,7 +160,7 @@ function Article() {
     const elemAdress = data.confectionPage[elemID];
     const [price, setPrice] = useState(elemAdress.price[0]);
     //@ts-ignore
-    const [liningID, setLiningID] = useState(0);
+    const [liningID, setLiningID] = useState(1);
 
     const handleAddToCart = (product: Product) => {
         dispatch(addToCart(product));
@@ -182,7 +189,7 @@ function Article() {
                 <div id="sub-article-container">
                     <div className="sub-article-pannel article-img-container">
                         <img className="article-img" src={"/img/" + elemAdress.id + "-img.jpg"}></img>
-                        <img className="article-img" src={"/img/robe-lining/lining-" + 1 + "-img.jpg"}></img>
+                        <img className="article-img" src={"/img/robe-lining/lining-" + liningID + "-img.jpg"}></img>
                     </div>
                     <div className="sub-article-pannel">
                         <form id="article-form" onSubmit={handleSubmit}>
