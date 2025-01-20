@@ -65,7 +65,7 @@ const ApplyPrice = (elemID: number) => {
     return (finalPrice);
 }
 
-const DisplayOptions = (setPrice: any, setLiningID: any) => {
+const DisplayOptions = (setPrice: any, setLiningID: any, setLiningPrice: any) => {
     const elementList: JSX.Element[] = [];
     const elemID = getArticleID();
     const optionsData = data.confectionPage[elemID].options;
@@ -83,10 +83,19 @@ const DisplayOptions = (setPrice: any, setLiningID: any) => {
             const optionsList: JSX.Element[] = [];
     
             const updateDisplay = () => {
-                const listElement = document.getElementById(prop) as HTMLSelectElement;
+                const dropdownList = prop;
+                const listElement = document.getElementById(dropdownList) as HTMLSelectElement;
                 const listElementIndex = listElement.selectedIndex;
-                setPrice(ApplyPrice(elemID));
-                setLiningID(listElementIndex);
+                if (dropdownList == "Doublure")
+                {
+                    setLiningID(listElementIndex);
+                    //@ts-ignore
+                    setLiningPrice(data.confectionPage[elemID].lining_price[listElementIndex])
+                }
+                else
+                {
+                    setPrice(ApplyPrice(elemID));
+                }
             }
 
             for (let j = 0; j < Object.keys(materialProp).length; j++)
@@ -159,8 +168,8 @@ function Article() {
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID];
     const [price, setPrice] = useState(elemAdress.price[0]);
-    //@ts-ignore
     const [liningID, setLiningID] = useState(1);
+    const [liningPrice, setLiningPrice] = useState(0);
 
     const handleAddToCart = (product: Product) => {
         dispatch(addToCart(product));
@@ -195,9 +204,9 @@ function Article() {
                         <form id="article-form" onSubmit={handleSubmit}>
                             <p id="article-description">{elemAdress.description}</p>
                             <p>À partir de {Math.min(...elemAdress.price)}€.</p>
-                            {DisplayOptions(setPrice, setLiningID)}
-                            <h3 id="TTC-price">Prix TTC: {price}€</h3>
-                            <h3 id="HT-price">Prix HT: {(price / tva).toFixed(2)}€</h3>
+                            {DisplayOptions(setPrice, setLiningID, setLiningPrice)}
+                            <h3 id="TTC-price">Prix TTC: {price + liningPrice}€</h3>
+                            <h3 id="HT-price">Prix HT: {((price + liningPrice)/ tva).toFixed(2)}€</h3>
                             <button type="submit">Ajouter au panier</button>
                         </form>                        
                     </div>
