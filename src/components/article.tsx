@@ -21,7 +21,7 @@ const ApplyOptions = (elemID: number) => {
 
     for (let i = 0; i < propsList.length; i++)
     {
-        const optionValue = ((document.getElementById(propsList[i])?.getElementsByClassName("option-name")[0] as HTMLInputElement | HTMLSelectElement)?.innerText)
+        const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement).value;
         optionList.push(optionValue);
     }
     return (optionList);
@@ -65,7 +65,7 @@ const ApplyPrice = (elemID: number) => {
     return (finalPrice);
 }
 
-const DisplayOptions = (setPrice: any, setLiningID: any, setLiningPrice: any) => {
+const DisplayOptions = (setRobePrice: any, setLiningID: any) => {
     const elementList: JSX.Element[] = [];
     const elemID = getArticleID();
     const optionsData = data.confectionPage[elemID].options;
@@ -77,7 +77,7 @@ const DisplayOptions = (setPrice: any, setLiningID: any, setLiningPrice: any) =>
         const propType = typeof optionsData[prop as keyof typeof optionsData];
         const finalText = prop.replace(/_/g, " ");
         const materialProp = optionsData[propsList[i] as keyof typeof optionsData] as string[];
-    
+        
         if (propType === "object")
         {
             const optionsList: JSX.Element[] = [];
@@ -86,16 +86,8 @@ const DisplayOptions = (setPrice: any, setLiningID: any, setLiningPrice: any) =>
                 const dropdownList = prop;
                 const listElement = document.getElementById(dropdownList) as HTMLSelectElement;
                 const listElementIndex = listElement.selectedIndex;
-                if (dropdownList == "Doublure")
-                {
-                    setLiningID(listElementIndex);
-                    //@ts-ignore
-                    setLiningPrice(data.confectionPage[elemID].lining_price[listElementIndex])
-                }
-                else
-                {
-                    setPrice(ApplyPrice(elemID));
-                }
+                setLiningID(listElementIndex);
+                setRobePrice(ApplyPrice(elemID));
             }
 
             for (let j = 0; j < Object.keys(materialProp).length; j++)
@@ -167,9 +159,8 @@ function Article() {
     const navigate = useNavigate();
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID];
-    const [price, setPrice] = useState(elemAdress.price[0]);
+    const [robePrice, setRobePrice] = useState(elemAdress.price[0]);
     const [liningID, setLiningID] = useState(1);
-    const [liningPrice, setLiningPrice] = useState(0);
 
     const handleAddToCart = (product: Product) => {
         dispatch(addToCart(product));
@@ -202,11 +193,13 @@ function Article() {
                     </div>
                     <div className="sub-article-pannel">
                         <form id="article-form" onSubmit={handleSubmit}>
-                            <p id="article-description">{elemAdress.description}</p>
-                            <p>À partir de {Math.min(...elemAdress.price)}€.</p>
-                            {DisplayOptions(setPrice, setLiningID, setLiningPrice)}
-                            <h3 id="TTC-price">Prix TTC: {price + liningPrice}€</h3>
-                            <h3 id="HT-price">Prix HT: {((price + liningPrice)/ tva).toFixed(2)}€</h3>
+                            <p id="article-description">{data.articlePage.robeDescription} {Math.min(...elemAdress.price)}€.</p>
+                            {/* <p>
+                                {data.articlePage.materialDescription?[elemAdress.options.Type?[liningID]]}
+                            </p> */}
+                            {DisplayOptions(setRobePrice, setLiningID)}
+                            <h3 id="TTC-price">Prix TTC: {robePrice}€</h3>
+                            <h3 id="HT-price">Prix HT: {((robePrice)/ tva).toFixed(2)}€</h3>
                             <button type="submit">Ajouter au panier</button>
                         </form>                        
                     </div>

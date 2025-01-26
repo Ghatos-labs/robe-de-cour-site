@@ -11,6 +11,7 @@ import Confections from './components/confections.tsx'
 import Contact from './components/contact.tsx'
 import Panier from './components/panier.tsx'
 import Article from './components/article.tsx'
+import Cgv from './components/cgv.tsx'
 
 function App() {
   return(
@@ -23,6 +24,7 @@ function App() {
         <Route path="/confections/:articleID" element={<Article/>}/>
         <Route path="/contacter" element={<Contact/>}/>
         <Route path="/panier" element={<Panier/>}/>
+        <Route path="/cgv" element={<Cgv/>}/>
       </Routes>
       <Footer/>
     </>

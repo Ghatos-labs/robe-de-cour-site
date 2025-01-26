@@ -171,5 +171,18 @@
         "category": "Accessoires",
         "options": {},
         "price": [140]
-    }]
+    }],
+    "articlePage":
+    {
+        "robeDescription": "Votre tenue complète: La robe à vos mesures, brodée à votre nom, l’épitoge, le rabat, un jeu de boutons supplémentaires et un sac de transport, à partir de ",
+        "materialDescription":
+        {
+            "Maestro": "Alpha",
+            "Ténor": "Bravo",
+            "Baryton": "Charlie",
+            "Pergolèse": "Delta",
+            "Soprano": "Echo",
+            "Prélude": "Foxtrot"
+        }
+    }
 }
