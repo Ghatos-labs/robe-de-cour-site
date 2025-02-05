@@ -7,6 +7,30 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
+function textField(text: string, property: string, key: string) {
+    const [value, setValue] = useState("");
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value);
+    };
+
+    return(
+        <div key={key}>
+            <label htmlFor={property}>{text + " (en cm)"}</label>
+            <br></br>
+            <input
+                type="number"
+                min="0"
+                id={property}
+                className="form-text-style"
+                required
+                value={value}
+                onChange={handleChange}
+            ></input>
+        </div>
+    )
+}
+
 const getArticleID = () => {
     const {articleID} = useParams();
     const list = data.confectionPage;
@@ -141,11 +165,7 @@ const DisplayOptions = (setRobePrice: any, setLiningID: any) => {
         else if (propType === "number")
         {
             elementList.push(
-                <div key={uuidv4()}>
-                    <label htmlFor={prop}>{finalText + " (en cm)"}</label>
-                    <br></br>
-                    <input type="number" min="0" id={prop} className="form-text-style" required></input>
-                </div>
+                textField(finalText, prop, i.toString())
             );
         }
     }
@@ -160,7 +180,7 @@ function Article() {
     const elemID = getArticleID();
     const elemAdress = data.confectionPage[elemID];
     const [robePrice, setRobePrice] = useState(elemAdress.price[0]);
-    const [liningID, setLiningID] = useState(1);
+    const [liningID, setLiningID] = useState(0);
 
     const handleAddToCart = (product: Product) => {
         dispatch(addToCart(product));
@@ -179,7 +199,13 @@ function Article() {
         addItemToCart();
         alert("Article ajouté au panier!");
         navigate('/confections');
-    };
+    }
+
+    var liningImg = <img className="article-img" src={"/img/robe-lining/lining-" + liningID + "-img.jpg"}></img>
+    if (elemAdress.category == "Accessoires")
+    {
+        liningImg = <div></div>
+    }
 
     return (
         <div className="content-container">
@@ -189,14 +215,17 @@ function Article() {
                 <div id="sub-article-container">
                     <div className="sub-article-pannel article-img-container">
                         <img className="article-img" src={"/img/" + elemAdress.id + "-img.jpg"}></img>
-                        <img className="article-img" src={"/img/robe-lining/lining-" + liningID + "-img.jpg"}></img>
+                        {liningImg}
                     </div>
                     <div className="sub-article-pannel">
                         <form id="article-form" onSubmit={handleSubmit}>
                             <p id="article-description">{data.articlePage.robeDescription} {Math.min(...elemAdress.price)}€.</p>
-                            {/* <p>
-                                {data.articlePage.materialDescription?[elemAdress.options.Type?[liningID]]}
-                            </p> */}
+                            <p>
+                                {
+                                    //@ts-ignore
+                                    data.articlePage.materialDescription?.[elemAdress.options.Type?.[liningID]]
+                                }
+                            </p>
                             {DisplayOptions(setRobePrice, setLiningID)}
                             <h3 id="TTC-price">Prix TTC: {robePrice}€</h3>
                             <h3 id="HT-price">Prix HT: {((robePrice)/ tva).toFixed(2)}€</h3>
