@@ -1,5 +1,5 @@
-
 import { Link } from "react-router-dom"
+import Image from './image'
 import HomeImg1 from "/img/design-1-img.jpg"
 import HomeImg2 from "/img/design-2-img.jpg"
 import HomeImg3 from "/img/design-3-img.jpg"
@@ -14,13 +14,13 @@ function Home() {
         <h2>Notre société</h2>
         <p>Eric et Nordine artisans vous proposent des robes sur mesure, un travail raffiné exécuté dans des tissus soigneusement sélectionnés parmi les meilleurs fournisseurs français. Des robes personnalisables, doublures, passepoil, fermetures aimantées, remonte-manche sont possibles. Un modèle de robe lavable en machine à 30 degrés. Profitez d’une sélection de robe prêtes à plaider.</p>
         <div className="homepage-img-container">
-          <img className="homepage-img" src={HomeImg1}></img>
-          <img className="homepage-img" src={HomeImg2}></img>
+          <Image source={HomeImg1} containerClass={"homepage-img-lazyload-bg"}/>
+          <Image source={HomeImg2} containerClass={"homepage-img-lazyload-bg"}/>
         </div>
         <div className="homepage-img-container">
-          <img className="homepage-img" src={HomeImg3}></img>
-          <img className="homepage-img" src={HomeImg4}></img>
-          <img className="homepage-img" src={HomeImg5}></img>
+          <Image source={HomeImg3} containerClass={"homepage-img-lazyload-bg"}/>
+          <Image source={HomeImg4} containerClass={"homepage-img-lazyload-bg"}/>
+          <Image source={HomeImg5} containerClass={"homepage-img-lazyload-bg"}/>
         </div>
         <h2>Comment passer votre commande?</h2>
         <ul>

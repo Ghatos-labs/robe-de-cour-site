@@ -1,52 +1,53 @@
 import { useAppSelector, useAppDispatch } from '../redux/hooks.ts'; 
-import { removeFromCart } from '../redux/actionTypes';
-import { Product } from '../redux/actionTypes.ts'
 import { Link } from "react-router-dom";
 import { RootState } from "@reduxjs/toolkit/query";
 import { v4 as uuidv4 } from 'uuid';
-import data from "./confections-data.json";
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { useReducer } from 'react';
 
 const tva = 1.2;
 
-const GeneratePDFTable = (cart: Product[]) => {
+const GeneratePDFTable = () => {
   const elementList: JSX.Element[] = [];
 
-  for (let i = 0; i < cart.length ; i++)
-  {
-    const optionList: JSX.Element[] = [];
-    const option = Object.keys(data.confectionPage[data.confectionPage.findIndex((Object) => Object.name == cart[i].name)].options);
-    var unit = ""
-    for (let j = 0; j < cart[i].options.length ; j++)
+  for (let i = 0; i < localStorage.length ; i++)
     {
-      const finalText = option[j]?.replace(/_/g, " ");
+      const optionList: JSX.Element[] = [];
 
-      if (j >= 2)
+      const storageItemID = localStorage.key(i);
+      const storageItem = JSON.parse(localStorage.getItem(storageItemID as string) as string);
+
+      var unit = ""
+
+      for (let j = 0; j < storageItem.options.length ; j++)
       {
-        unit = "cm"
+        const finalText = storageItem.options[j]?.replace(/_/g, " ");
+        if (j >= 2)
+        {
+          unit = " cm"
+        }
+        if (j == 0)
+        {
+          optionList.push(
+            <p key={uuidv4()}>{finalText + unit}</p>
+          )
+        }
+        else
+        {
+          optionList.push(
+            <p key={uuidv4()}><br></br>{finalText + unit}</p>
+          )        
+        }
       }
-      if (j == 0)
-      {
-        optionList.push(
-          <p key={uuidv4()}>{finalText + ": " + cart[i].options[j] + unit}</p>
-        )
-      }
-      else
-      {
-        optionList.push(
-          <p key={uuidv4()}><br></br>{finalText + ": " + cart[i].options[j] + unit}</p>
-        )        
-      }
+      elementList.push(
+          <tr key={uuidv4()}>
+            <th>{storageItem.name}</th>
+            <th>{optionList}</th>
+            <th>{"TTC: " + storageItem.price + "€"}<br></br>{"HT: " + (storageItem.price / tva).toFixed(2) + "€"}</th>
+          </tr>        
+      )
     }
-    elementList.push(
-        <tr key={uuidv4()}>
-          <th>{cart[i].name}</th>
-          <th>{optionList}</th>
-          <th>{"TTC: " + cart[i].price + "€"}<br></br>{"HT: " + (cart[i].price / tva).toFixed(2) + "€"}</th>
-        </tr>        
-    )
-  }
 
   return (
     <>
@@ -63,8 +64,9 @@ const GeneratePDFTable = (cart: Product[]) => {
     </>
   )
 }
-const GeneratePDF = (cart: Product[]) => {
+const GeneratePDF = () => {
   const invoice = new jsPDF();
+
   const formAdress = (elem: string) => {
     return (document.getElementById(elem) as HTMLInputElement | HTMLSelectElement)?.value
   }
@@ -103,9 +105,12 @@ const GeneratePDF = (cart: Product[]) => {
 
   const totalPrice = () => {
     var price = 0
-    for (let i = 0; i < cart.length; i++)
+
+    for (let i = 0; i < localStorage.length; i++)
     {
-      price += cart[i].price
+      const storageItemID = localStorage.key(i);
+      const storageItem = JSON.parse(localStorage.getItem(storageItemID as string) as string);
+      price += storageItem.price
     }
     return price
   }
@@ -143,74 +148,79 @@ const GeneratePDF = (cart: Product[]) => {
 
   invoice.save("Facture-Robe-de-Cour.pdf");
 
-  return 0
+  return 0;
 }
 
-const GenerateOptions = (cart: Product[], id: number) => {
+const GenerateOptions = (itemIndex: number) => {
   const elementList: JSX.Element[] = [];
+  const storageItemID = localStorage.key(itemIndex);
+  const storageItem = JSON.parse(localStorage.getItem(storageItemID as string) as string);
 
-  for (let i = 0; i < cart[id].options.length; i++)
+
+  for (let i = 0; i < storageItem.options.length; i++)
   {
-    const option = Object.keys(data.confectionPage[data.confectionPage.findIndex((Object) => Object.name == cart[id].name)].options);
-    var finalText = option[i]?.replace(/_/g, " ");
-    var unit: string = ""
+    var finalText = storageItem.options[i]?.replace(/_/g, " ");
+    var unit: string = "";
 
-    if (option[i] == undefined)
-    {
-      var finalText = "ERROR";
-    }
     if (i >= 2)
     {
-      unit = "cm"
+      unit = " cm"
     }
 
     elementList.push(
-      <p key={uuidv4()}>{finalText + ": " + cart[id].options[i] + unit}</p>
+      <p key={uuidv4()}>{finalText + unit}</p>
     )
   }
+
   return (elementList)
 }
 
-const DisplayCartElements = (cart: Product[]) => {
+const DisplayCartElements = (forceUpdateFunc: any) => {
   const elementList: JSX.Element[] = [];
-  const dispatch = useAppDispatch();
 
   const handleRemove = (id: string) => {
-    dispatch(removeFromCart(id));
+    localStorage.removeItem(id);
+    forceUpdateFunc();
   };
 
-  for (let i = 0; i < cart.length; i++)
+  for (let i = 0; i < localStorage.length; i++)
   {
+    const webStorageItemKey = localStorage.key(i);
+    const webStorageItem = JSON.parse(localStorage.getItem(webStorageItemKey as string) as string);
+
     elementList.push(
       <tr key={uuidv4()}>
-        <td>{cart[i].name}</td>
-        <td>{GenerateOptions(cart, i)}</td>
-        <td>{"TTC: " + cart[i].price + "€"}<br></br>{"HT: " + (cart[i].price / tva).toFixed(2) + "€"}</td>
-        <td><button onClick={() => handleRemove(cart[i].id)}>Supprimer l'article</button></td>
+        <td>{webStorageItem.name}</td>
+        <td>{GenerateOptions(i)}</td>
+        <td>{"TTC: " + webStorageItem.price + "€"}<br></br>{"HT: " + (webStorageItem.price / tva).toFixed(2) + "€"}</td>
+        <td><button onClick={() => handleRemove(webStorageItem.id)}>Supprimer l'article</button></td>
       </tr>
     )
   }
 
   return elementList
 }
-const computePrice = (cart: Product[]) => {
+const computePrice = () => {
   var counter = 0
-  for (let i = 0; i < cart.length; i++)
+
+  for (let i = 0; i < localStorage.length; i++)
   {
-    counter += cart[i].price;
+    const storageItemID = localStorage.key(i);
+    const storageItem = JSON.parse(localStorage.getItem(storageItemID as string) as string);
+    counter += storageItem.price;
   }
   return counter
 }
-const showCartList = () => {
+const showCartList = (forceUpdateFunc: any) => {
   //@ts-ignore
   const cart = useAppSelector((state: RootState) => state.cart);
   
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    GeneratePDF(cart);
+    GeneratePDF();
   }
 
-  if (cart.length == 0)
+  if (localStorage.length == 0)
   {
     return(
       <>
@@ -222,7 +232,7 @@ const showCartList = () => {
   }
   return(
     <>
-      {GeneratePDFTable(cart)}
+      {GeneratePDFTable()}
       <table id="cart-table">
         <thead>
           <tr>
@@ -233,12 +243,12 @@ const showCartList = () => {
           </tr>
         </thead>
         <tbody>
-          {DisplayCartElements(cart)}
+          {DisplayCartElements(() => forceUpdateFunc())}
         </tbody>
       </table>
 
-      <h2>Total TTC: {computePrice(cart)}€</h2>
-      <h2>Total HT: {(computePrice(cart) / tva).toFixed(2)}€</h2>
+      <h2>Total TTC: {computePrice()}€</h2>
+      <h2>Total HT: {(computePrice() / tva).toFixed(2)}€</h2>
 
       <h2>Coordonées de livraison:</h2>
       <form onSubmit={handleSubmit}>
@@ -285,11 +295,12 @@ const showCartList = () => {
 }
 
 function Panier() {
+  const [, forceUpdate] = useReducer(x => x + 1, 0);
   return (
     <div className="content-container">
       <div>
         <h2>Panier</h2>
-          {showCartList()}
+          {showCartList(() => forceUpdate())}
       </div>
     </div>
   )

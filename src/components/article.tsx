@@ -5,7 +5,7 @@ import { addToCart } from '../redux/actionTypes';
 import { Product } from '../redux/actionTypes';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import Image from './image';
 
 function textField(text: string, property: string, key: string) {
     const [value, setValue] = useState("");
@@ -45,7 +45,7 @@ const ApplyOptions = (elemID: number) => {
 
     for (let i = 0; i < propsList.length; i++)
     {
-        const optionValue = (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement).value;
+        const optionValue = propsList[i] + ": " + (document.getElementById(propsList[i]) as HTMLInputElement | HTMLSelectElement).value;
         optionList.push(optionValue);
     }
     return (optionList);
@@ -186,22 +186,41 @@ function Article() {
         dispatch(addToCart(product));
     };
 
-    const addItemToCart = () => handleAddToCart({
-        id: uuidv4(),
-        name: elemAdress.name,
-        description: elemAdress.description,
-        price: ApplyPrice(elemID),
-        options: ApplyOptions(elemID)
-    })
+    const addItemToCart = () => {
+        const cartElemID = uuidv4();
+        const webStorageElem: Product = {
+            id: cartElemID,
+            name: elemAdress.name,
+            description: elemAdress.description,
+            price: ApplyPrice(elemID),
+            options: ApplyOptions(elemID)
+        }
+        localStorage.setItem(cartElemID, JSON.stringify(webStorageElem))
+        handleAddToCart(webStorageElem);
+    }
 
-    const handleSubmit = (event: React.FormEvent) => {
+    async function confirmationBox() {
+        const confirmContainer = document.getElementById("confirmation-box-container");
+        const confirmButton = document.getElementById("confirmation-button");
+
+        confirmContainer?.setAttribute("style", "visibility: visible;");
+        return new Promise<void>((resolve) => {
+            //@ts-ignore
+            confirmButton.onclick = () => {
+                resolve();
+            }
+        })
+    }
+
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         addItemToCart();
-        alert("Article ajouté au panier!");
+        await confirmationBox();
         navigate('/confections');
     }
 
-    var liningImg = <img className="article-img" src={"/img/robe-lining/lining-" + liningID + "-img.jpg"}></img>
+    var liningImg = <Image containerClass="article-img" source={"/img/robe-lining/lining-" + liningID + "-img.jpg"}/>
+
     if (elemAdress.category == "Accessoires")
     {
         liningImg = <div></div>
@@ -210,6 +229,12 @@ function Article() {
     return (
         <div className="content-container">
             <div id="article-container">
+                <div id="confirmation-box-container">
+                    <div id="confirmation-box">
+                        <p>Votre article a été ajoutée au panier!</p>
+                        <button id="confirmation-button">Continuer</button>
+                    </div>
+                </div>
                 <Link to="/confections" className="btn-underline-effect">Retour</Link>
                 <h1>{elemAdress.name}</h1>
                 <div id="sub-article-container">

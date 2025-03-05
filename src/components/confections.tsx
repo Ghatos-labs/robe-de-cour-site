@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
+import Image from './image'
 import data from "./confections-data.json";
 
 const SortItemsByCategory = () => {
@@ -38,11 +39,16 @@ const DisplayProducts = () => {
       categoryContent.push
       (
         <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn btn-underline-effect" key={uuidv4()}>
-          <img className="confection-btn-img" src={"/img/" + sortedItems[i][j].id + "-img.jpg"} key={uuidv4()}></img>
+          <Image 
+            source={"/img/" + sortedItems[i][j].id + "-img.jpg"}
+            containerClass={"confection-btn-img-container"}
+          />
           <h3 className="confection-btn-title">{sortedItems[i][j].name}</h3>
           <p>À partir de {Math.min(...sortedItems[i][j].price)}€</p>
         </Link>
       )
+      const imgContainerAdress = document.querySelector(".confection-btn-img-container");
+      imgContainerAdress?.getAttribute("width")
     }
     elementList.push
     (
