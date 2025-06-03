@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import './style.css'
 
@@ -18,14 +18,16 @@ function App() {
     <>
       <Navbar/>
       <Banner/>
-      <Routes>
-        <Route path={"/"} element={<Home/>}/>
-        <Route path={"/confections"} element={<Confections/>}/>
-        <Route path={"/confections/:articleID"} element={<Article/>}/>
-        <Route path={"/contacter"} element={<Contact/>}/>
-        <Route path={"/panier"} element={<Panier/>}/>
-        {/* <Route path={websiteRoot + "/cgv"} element={<Cgv/>}/> */}
-      </Routes>
+      <BrowserRouter basename="/robe-de-cour-site">
+        <Routes>
+          <Route path={"/"} element={<Home/>}/>
+          <Route path={"/confections"} element={<Confections/>}/>
+          <Route path={"/confections/:articleID"} element={<Article/>}/>
+          <Route path={"/contacter"} element={<Contact/>}/>
+          <Route path={"/panier"} element={<Panier/>}/>
+          {/* <Route path={websiteRoot + "/cgv"} element={<Cgv/>}/> */}
+        </Routes>      
+      </BrowserRouter>
       <Footer/>
     </>
   )
