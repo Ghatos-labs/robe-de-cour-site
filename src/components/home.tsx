@@ -24,8 +24,8 @@ function Home() {
         </div>
         <h2>Comment passer votre commande?</h2>
         <ul>
-          <li>Rendez-vous sur la <Link to="/confections" className="btn-underline-effect">page de confections</Link> puis sélectionnez les articles et les options que vous désirez.</li>
-          <li>Une fois tout vos articles ajoutés au panier, allez au <Link to="/panier" className="btn-underline-effect">panier</Link> pour obtenir votre facture.</li>
+          <li>Rendez-vous sur la <Link to={ "/confections"} className="btn-underline-effect">page de confections</Link> puis sélectionnez les articles et les options que vous désirez.</li>
+          <li>Une fois tout vos articles ajoutés au panier, allez au <Link to={"/panier"} className="btn-underline-effect">panier</Link> pour obtenir votre facture.</li>
           <li>Une fois imprimée et signée, envoyez-la avec un chèque par voie postale à l'adresse suivante:
             <ul>
               <li>5 rue Emile Gilbert, 75012 Paris</li>

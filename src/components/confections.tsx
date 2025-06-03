@@ -3,6 +3,9 @@ import { v4 as uuidv4 } from 'uuid';
 import Image from './image'
 import data from "./confections-data.json";
 
+//change this from "/img/" to "/robe-de-cour-site/img/" to adapt for github version
+const sourceTemplate = "/robe-de-cour-site/img/";
+
 const SortItemsByCategory = () => {
   var products = data.confectionPage;
   var categories: string[] = [];
@@ -40,7 +43,7 @@ const DisplayProducts = () => {
       (
         <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn btn-underline-effect" key={uuidv4()}>
           <Image 
-            source={"/img/" + sortedItems[i][j].id + "-img.jpg"}
+            source={sourceTemplate + sortedItems[i][j].id + "-img.jpg"}
             containerClass={"confection-btn-img-container"}
           />
           <h3 className="confection-btn-title">{sortedItems[i][j].name}</h3>

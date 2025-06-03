@@ -7,6 +7,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState } from "react";
 import Image from './image';
 
+//change this from "/img/" to "/robe-de-cour-site/img/" to adapt for github version
+const sourceTemplate = "/robe-de-cour-site/img/";
+
 function textField(text: string, property: string, key: string) {
     const [value, setValue] = useState("");
 
@@ -219,7 +222,7 @@ function Article() {
         navigate('/confections');
     }
 
-    var liningImg = <Image containerClass="article-img" source={"/img/robe-lining/lining-" + liningID + "-img.jpg"}/>
+    var liningImg = <Image containerClass="article-img" source={sourceTemplate + "robe-lining/lining-" + liningID + "-img.jpg"}/>
 
     if (elemAdress.category == "Accessoires")
     {
@@ -239,7 +242,7 @@ function Article() {
                 <h1>{elemAdress.name}</h1>
                 <div id="sub-article-container">
                     <div className="sub-article-pannel article-img-container">
-                        <img className="article-img" src={"/img/" + elemAdress.id + "-img.jpg"}></img>
+                        <img className="article-img" src={sourceTemplate + elemAdress.id + "-img.jpg"}></img>
                         {liningImg}
                     </div>
                     <div className="sub-article-pannel">
