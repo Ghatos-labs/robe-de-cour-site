@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="refresh" content="0; url=/" />
@@ -10,30 +10,4 @@
     </script>
   </head>
   <body></body>
-</html> -->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Redirecting…</title>
-    <script>
-      (function () {
-        var base = '/robe-de-cour-site'; // Replace with your repo name if different
-        var current = window.location.pathname + window.location.search + window.location.hash;
-
-        // Strip base if already present to avoid double-prefix
-        if (current.startsWith(base)) {
-          current = current.slice(base.length);
-        }
-
-        // Redirect to the app's index.html with the original route
-        var target = base + current;
-        window.location.replace(target);
-      })();
-    </script>
-  </head>
-  <body>
-    <h1>Redirecting…</h1>
-  </body>
 </html>
