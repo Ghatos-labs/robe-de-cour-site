@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="refresh" content="0; url=/" />
@@ -10,4 +10,39 @@
     </script>
   </head>
   <body></body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var repo = '/robe-de-cour-site';
+        var fullPath = window.location.pathname + window.location.search + window.location.hash;
+
+        // ✅ Prevent redirect loop if there's already a hash (HashRouter handles it)
+        if (window.location.hash) return;
+
+        // ✅ Prevent infinite loop by checking how many times repo is repeated
+        var times = (window.location.pathname.match(new RegExp(repo, 'g')) || []).length;
+        if (times > 1) return;
+
+        // Strip leading repo if it's already present
+        var path = window.location.pathname.startsWith(repo)
+          ? window.location.pathname.slice(repo.length)
+          : window.location.pathname;
+
+        // Construct new URL with hash for HashRouter
+        var newUrl = repo + '/#' + path + window.location.search + window.location.hash;
+
+        // Redirect
+        window.location.replace(newUrl);
+      })();
+    </script>
+  </head>
+  <body>
+    <h1>Redirecting…</h1>
+  </body>
 </html>
