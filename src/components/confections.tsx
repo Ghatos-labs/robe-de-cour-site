@@ -40,7 +40,7 @@ const DisplayProducts = () => {
       (
         <Link to={"/confections/" + sortedItems[i][j].id} className="confection-btn btn-underline-effect" key={uuidv4()}>
           <Image 
-            source={"/img/" + sortedItems[i][j].id + "-img.jpg"}
+            source={"./img/" + sortedItems[i][j].id + "-img.jpg"}
             containerClass={"confection-btn-img-container"}
           />
           <h3 className="confection-btn-title">{sortedItems[i][j].name}</h3>

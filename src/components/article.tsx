@@ -110,7 +110,11 @@ const DisplayOptions = (setRobePrice: any, setLiningID: any) => {
                 const dropdownList = prop;
                 const listElement = document.getElementById(dropdownList) as HTMLSelectElement;
                 const listElementIndex = listElement.selectedIndex;
-                setLiningID(listElementIndex);
+                // setLiningID(listElementIndex);
+                if (dropdownList.toLowerCase().includes("doublure"))
+                {
+                    setLiningID(listElementIndex);
+                }
                 setRobePrice(ApplyPrice(elemID));
             }
 
@@ -219,7 +223,7 @@ function Article() {
         navigate('/confections');
     }
 
-    var liningImg = <Image containerClass="article-img" source={"/img/robe-lining/lining-" + liningID + "-img.jpg"}/>
+    var liningImg = <Image containerClass="article-img" source={"/robe-de-cour-site/img/robe-lining/lining-" + liningID + "-img.jpg"}/>
 
     if (elemAdress.category == "Accessoires")
     {
@@ -239,18 +243,18 @@ function Article() {
                 <h1>{elemAdress.name}</h1>
                 <div id="sub-article-container">
                     <div className="sub-article-pannel article-img-container">
-                        <img className="article-img" src={"/img/" + elemAdress.id + "-img.jpg"}></img>
+                        <img className="article-img" src={"/robe-de-cour-site/img/" + elemAdress.id + "-img.jpg"}></img>
                         {liningImg}
                     </div>
                     <div className="sub-article-pannel">
                         <form id="article-form" onSubmit={handleSubmit}>
                             <p id="article-description">{data.articlePage.robeDescription} {Math.min(...elemAdress.price)}€.</p>
-                            <p>
+                            {/* <p>
                                 {
                                     //@ts-ignore
                                     data.articlePage.materialDescription?.[elemAdress.options.Type?.[liningID]]
                                 }
-                            </p>
+                            </p> */}
                             {DisplayOptions(setRobePrice, setLiningID)}
                             <h3 id="TTC-price">Prix TTC: {robePrice}€</h3>
                             <h3 id="HT-price">Prix HT: {((robePrice)/ tva).toFixed(2)}€</h3>
